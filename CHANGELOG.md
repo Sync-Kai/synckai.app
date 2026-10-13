@@ -5,6 +5,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+### Fixed
+
+- The Privacy link no longer scrolls the privacy box partly under the sticky header: the section is spaced from the inside, like the others, so it lands at the same distance below the header.
+
 ## [1.2.0] - 2026-10-13
 
 ### Changed

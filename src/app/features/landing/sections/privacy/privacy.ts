@@ -7,7 +7,7 @@ import { Icon } from '@shared/ui/icon/icon';
   selector: 'sk-privacy',
   imports: [Icon, ExternalLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { id: 'privacy', class: 'section-wrap mt-30' },
+  host: { id: 'privacy', class: 'section-wrap pt-30' },
   template: `
     <div
       class="grid grid-cols-[auto_1fr] items-start gap-10 rounded-[32px] bg-ink bg-[radial-gradient(90%_120%_at_0%_0%,rgb(124_92_255/0.22),transparent_60%)] px-[clamp(24px,4vw,40px)] py-14 max-[900px]:grid-cols-1 max-[900px]:gap-5 max-[900px]:rounded-3xl"
