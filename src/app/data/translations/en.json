@@ -146,11 +146,19 @@
     "copied": "Link copied",
     "manual": "Copy this link:"
   },
+  "changelog": {
+    "metaTitle": "What's new in SyncKai",
+    "metaDescription": "The latest versions of SyncKai, the extension that updates your AniList and MyAnimeList list at the credits: new features and fixes in a few words.",
+    "title": "What's new",
+    "lead": "The main changes of each SyncKai version, in a few words.",
+    "badge": "New",
+    "full": "Full technical changelog on GitHub"
+  },
   "footer": {
     "source": "Source code",
     "creator": "The creator on AniList",
     "issues": "Report a bug",
-    "changelog": "Changelog",
+    "changelog": "What's new",
     "privacy": "Privacy policy",
     "disclaimer": "SyncKai is not affiliated with Crunchyroll, ADN, Netflix, Disney+, AniList or MyAnimeList."
   }

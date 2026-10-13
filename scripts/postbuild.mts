@@ -50,12 +50,21 @@ const languages = readdirSync(TRANSLATIONS)
     a === site.defaultLanguage ? -1 : b === site.defaultLanguage ? 1 : a.localeCompare(b),
   );
 
-const alternates = languages
-  .map((code) => `    <xhtml:link rel="alternate" hreflang="${code}" href="${site.url}/${code}/"/>`)
-  .join('\n');
-const urls = languages
-  .map((code) => `  <url>\n    <loc>${site.url}/${code}/</loc>\n${alternates}\n  </url>`)
-  .join('\n');
+// Pages prérendues pour chaque langue, sans la langue : l'accueil et les nouveautés.
+const PAGES: readonly string[] = ['', 'changelog/'];
+
+const pageUrl = (code: string, page: string): string => `${site.url}/${code}/${page}`;
+const urls = PAGES.flatMap((page) => {
+  const alternates = languages
+    .map(
+      (code) =>
+        `    <xhtml:link rel="alternate" hreflang="${code}" href="${pageUrl(code, page)}"/>`,
+    )
+    .join('\n');
+  return languages.map(
+    (code) => `  <url>\n    <loc>${pageUrl(code, page)}</loc>\n${alternates}\n  </url>`,
+  );
+}).join('\n');
 writeFileSync(
   join(OUT, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>
@@ -66,5 +75,5 @@ ${urls}
 );
 
 console.log(
-  `postbuild : 404.html, _redirects (${shortLinks.length} liens courts), sitemap (${languages.join(', ')})`,
+  `postbuild : 404.html, _redirects (${shortLinks.length} liens courts), sitemap (${PAGES.length} pages × ${languages.join(', ')})`,
 );

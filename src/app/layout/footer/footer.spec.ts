@@ -22,4 +22,18 @@ describe('Footer', () => {
       expect(link?.getAttribute('target')).toBe('_blank');
     }
   });
+
+  it('mène aux nouveautés du site, dans le même onglet', () => {
+    TestBed.configureTestingModule({ providers: [provideRouter([])] });
+    const fixture = TestBed.createComponent(Footer);
+    fixture.componentRef.setInput('text', en.footer);
+    fixture.componentRef.setInput('site', SITE_CONFIG_DATA);
+    fixture.componentRef.setInput('languages', [{ code: 'en', name: 'English' }]);
+    fixture.componentRef.setInput('current', 'en');
+    fixture.componentRef.setInput('languageLabel', en.nav.language);
+    fixture.detectChanges();
+    const link = (fixture.nativeElement as HTMLElement).querySelector('a[href="/en/changelog"]');
+    expect(link?.textContent).toContain(en.footer.changelog);
+    expect(link?.getAttribute('target')).toBeNull();
+  });
 });

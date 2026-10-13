@@ -35,7 +35,7 @@ import { LanguageMenu } from '../language-menu/language-menu';
     <nav aria-label="SyncKai" class="ml-auto flex gap-6 max-[900px]:hidden">
       @for (link of links(); track link.fragment) {
         <a
-          [routerLink]="[]"
+          [routerLink]="['/', current()]"
           [fragment]="link.fragment"
           class="text-[15px] font-medium text-mist no-underline hover:text-moon"
           >{{ link.label }}</a
@@ -47,6 +47,7 @@ import { LanguageMenu } from '../language-menu/language-menu';
       [languages]="languages()"
       [current]="current()"
       [label]="nav().language"
+      [page]="page()"
       (picked)="languagePicked.emit($event)"
     />
   `,
@@ -55,9 +56,12 @@ export class Header {
   readonly nav = input.required<NavText>();
   readonly languages = input.required<readonly Language[]>();
   readonly current = input.required<LanguageCode>();
+  /** Page affichée, sans la langue : le menu des langues reste sur cette page. */
+  readonly page = input<readonly string[]>([]);
   readonly languagePicked = output<LanguageCode>();
 
-  // Même ordre que les sections de la page (vérifié par landing-page.spec.ts).
+  // Même ordre que les sections de l'accueil (vérifié par landing-page.spec.ts).
+  // Les ancres visent l'accueil de la langue, pour marcher aussi depuis les autres pages.
   protected readonly links = computed(() => {
     const nav = this.nav();
     return [

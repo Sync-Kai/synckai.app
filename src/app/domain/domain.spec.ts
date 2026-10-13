@@ -1,5 +1,6 @@
 import { isMobileDevice } from './device';
 import { pickLanguage } from './language';
+import { Release, compareVersions, formatReleaseDate, localizeReleases } from './release';
 import { formatPlaybackTime, interpolate } from './playback';
 import { screenshotPath } from './screenshot';
 import { SiteConfig } from './site';
@@ -278,5 +279,42 @@ describe('softwareApplicationSchema', () => {
 
   it('échappe « < » pour qu’aucun texte ne ferme la balise script', () => {
     expect(serializeJsonLd({ name: '</script>' })).toBe('{"name":"\\u003c/script>"}');
+  });
+});
+
+describe('releases', () => {
+  const releases: Release[] = [
+    {
+      version: '2.2.0',
+      date: '2026-10-11',
+      text: {
+        en: { title: 'Old', highlights: ['a'] },
+        fr: { title: 'Ancienne', highlights: ['a'] },
+      },
+    },
+    {
+      version: '2.10.0',
+      date: '2026-11-02',
+      text: { en: { title: 'New', highlights: ['b'] } },
+    },
+  ];
+
+  it('compare les versions nombre par nombre, pas comme du texte', () => {
+    expect(compareVersions('2.10.0', '2.9.1')).toBeGreaterThan(0);
+    expect(compareVersions('2.2.0', '2.2.1')).toBeLessThan(0);
+    expect(compareVersions('1.0.0', '1.0.0')).toBe(0);
+  });
+
+  it('trie de la plus récente à la plus ancienne, dans la langue demandée ou celle de repli', () => {
+    expect(localizeReleases(releases, 'fr', 'en').map((r) => [r.version, r.title])).toEqual([
+      ['2.10.0', 'New'],
+      ['2.2.0', 'Ancienne'],
+    ]);
+  });
+
+  it('écrit la date dans la langue, sans décalage de fuseau', () => {
+    expect(formatReleaseDate('2026-10-12', 'fr')).toBe('12 octobre 2026');
+    expect(formatReleaseDate('2026-10-12', 'en')).toBe('October 12, 2026');
+    expect(formatReleaseDate('2026-10-12', 'de')).toBe('12. Oktober 2026');
   });
 });

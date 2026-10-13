@@ -1,7 +1,8 @@
 import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import { RELEASE_DATA } from '@data/releases';
 import { SITE_CONFIG_DATA } from '@data/site.config';
 import { TRANSLATION_DATA } from '@data/translations';
-import { SITE_CONFIG, TRANSLATIONS } from './tokens';
+import { RELEASES, SITE_CONFIG, TRANSLATIONS } from './tokens';
 
 /**
  * Branche la couche data sur l'application. C'est le seul endroit qui sait d'où viennent
@@ -18,5 +19,6 @@ export function provideSiteData(): EnvironmentProviders {
   return makeEnvironmentProviders([
     { provide: SITE_CONFIG, useValue: SITE_CONFIG_DATA },
     { provide: TRANSLATIONS, useValue: byDefaultFirst },
+    { provide: RELEASES, useValue: RELEASE_DATA },
   ]);
 }

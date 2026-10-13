@@ -1,0 +1,164 @@
+[
+  {
+    "version": "2.3.1",
+    "date": "2026-10-12",
+    "text": {
+      "en": {
+        "title": "Disney+, more imports and the side panel everywhere",
+        "highlights": [
+          "Disney+ support (optional, Japanese anime only), synced at the start of the credits like on Crunchyroll.",
+          "Import your ADN and Netflix watch history, with the same preview as the Crunchyroll import.",
+          "The side panel opens on any page and follows the active tab. New shortcut: Alt+Shift+1.",
+          "Remove an anime from your lists, or add a comment to its entry, right from SyncKai.",
+          "Many season-matching fixes on Crunchyroll, Netflix and Disney+ (One Piece arcs, sequels published separately)."
+        ]
+      },
+      "fr": {
+        "title": "Disney+, nouveaux imports et panneau latéral partout",
+        "highlights": [
+          "Disney+ pris en charge (en option, animes japonais uniquement), synchronisé au début du générique comme sur Crunchyroll.",
+          "Importe ton historique ADN et Netflix, avec le même aperçu que l'import Crunchyroll.",
+          "Le panneau latéral s'ouvre sur n'importe quelle page et suit l'onglet actif. Nouveau raccourci : Alt+Maj+1.",
+          "Retire un anime de tes listes, ou ajoute un commentaire à sa fiche, directement depuis SyncKai.",
+          "Nombreuses corrections de la reconnaissance des saisons sur Crunchyroll, Netflix et Disney+ (arcs de One Piece, suites publiées à part)."
+        ]
+      },
+      "de": {
+        "title": "Disney+, neue Importe und die Seitenleiste überall",
+        "highlights": [
+          "Disney+ wird unterstützt (optional, nur japanische Anime) und zu Beginn des Abspanns synchronisiert, wie auf Crunchyroll.",
+          "Importiere deinen ADN- und Netflix-Verlauf, mit derselben Vorschau wie beim Crunchyroll-Import.",
+          "Die Seitenleiste öffnet sich auf jeder Seite und folgt dem aktiven Tab. Neues Tastenkürzel: Alt+Umschalt+1.",
+          "Entferne einen Anime aus deinen Listen oder schreib einen Kommentar zu seinem Eintrag, direkt in SyncKai.",
+          "Viele Korrekturen bei der Staffelerkennung auf Crunchyroll, Netflix und Disney+ (One-Piece-Arcs, separat veröffentlichte Fortsetzungen)."
+        ]
+      }
+    }
+  },
+  {
+    "version": "2.2.1",
+    "date": "2026-10-11",
+    "text": {
+      "en": {
+        "title": "Netflix numbering fix",
+        "highlights": [
+          "Netflix: series whose seasons continue the numbering (like One Piece) no longer get the previous seasons' episodes added again."
+        ]
+      },
+      "fr": {
+        "title": "Correctif de numérotation Netflix",
+        "highlights": [
+          "Netflix : les séries dont les saisons continuent la numérotation (comme One Piece) ne se voient plus ajouter une deuxième fois les épisodes des saisons précédentes."
+        ]
+      },
+      "de": {
+        "title": "Korrektur der Netflix-Nummerierung",
+        "highlights": [
+          "Netflix: Bei Serien, deren Staffeln die Nummerierung fortsetzen (wie One Piece), werden die Folgen der vorherigen Staffeln nicht mehr erneut dazugezählt."
+        ]
+      }
+    }
+  },
+  {
+    "version": "2.2.0",
+    "date": "2026-10-11",
+    "text": {
+      "en": {
+        "title": "Reliability: your progress never goes backwards",
+        "highlights": [
+          "After a full audit, writes to the same series run one after another: your progress never goes backwards.",
+          "Your AniList and MyAnimeList sign-ins are now encrypted in your browser.",
+          "Each account keeps its own data: nothing from an old account is written to a new one.",
+          "The season you pick by hand is remembered for the next episodes.",
+          "The end of an episode is detected more reliably: autoplay, background tabs, slow players."
+        ]
+      },
+      "fr": {
+        "title": "Fiabilité : ta progression ne recule jamais",
+        "highlights": [
+          "Après un audit complet, les écritures sur une même série passent l'une après l'autre : ta progression ne recule plus jamais.",
+          "Tes connexions AniList et MyAnimeList sont maintenant chiffrées dans ton navigateur.",
+          "Chaque compte garde ses propres données : rien d'un ancien compte n'est écrit sur un nouveau.",
+          "La saison que tu choisis à la main est retenue pour les épisodes suivants.",
+          "La fin d'un épisode est mieux détectée : lecture automatique, onglets en arrière-plan, lecteurs lents."
+        ]
+      },
+      "de": {
+        "title": "Zuverlässigkeit: dein Fortschritt geht nie zurück",
+        "highlights": [
+          "Nach einem vollständigen Audit laufen Schreibvorgänge für dieselbe Serie nacheinander: Dein Fortschritt geht nie mehr zurück.",
+          "Deine AniList- und MyAnimeList-Anmeldungen werden jetzt in deinem Browser verschlüsselt.",
+          "Jedes Konto behält seine eigenen Daten: Nichts von einem alten Konto landet in einem neuen.",
+          "Die Staffel, die du von Hand wählst, wird für die nächsten Folgen gemerkt.",
+          "Das Ende einer Folge wird zuverlässiger erkannt: Autoplay, Tabs im Hintergrund, langsame Player."
+        ]
+      }
+    }
+  },
+  {
+    "version": "2.1.0",
+    "date": "2026-10-10",
+    "text": {
+      "en": {
+        "title": "Netflix joins Crunchyroll and ADN",
+        "highlights": [
+          "Netflix support, optional and for anime only: turn it on in Settings › Playback & sync.",
+          "Only series that AniList links to Netflix are synced; other titles are ignored silently.",
+          "Side panel and live progress on Netflix playback pages too."
+        ]
+      },
+      "fr": {
+        "title": "Netflix rejoint Crunchyroll et ADN",
+        "highlights": [
+          "Netflix pris en charge, en option et pour les animes uniquement : active-le dans Réglages › Lecture & synchro.",
+          "Seules les séries qu'AniList relie à Netflix sont synchronisées ; les autres titres sont ignorés sans bruit.",
+          "Panneau latéral et progression en direct aussi sur les pages de lecture Netflix."
+        ]
+      },
+      "de": {
+        "title": "Netflix kommt zu Crunchyroll und ADN dazu",
+        "highlights": [
+          "Netflix wird unterstützt, optional und nur für Anime: Schalte es unter Einstellungen › Wiedergabe & Sync ein.",
+          "Nur Serien, die AniList mit Netflix verknüpft, werden synchronisiert; andere Titel werden still ignoriert.",
+          "Seitenleiste und Live-Fortschritt jetzt auch auf Netflix-Wiedergabeseiten."
+        ]
+      }
+    }
+  },
+  {
+    "version": "2.0.0",
+    "date": "2026-10-08",
+    "text": {
+      "en": {
+        "title": "Side panel, schedule and Crunchyroll import",
+        "highlights": [
+          "A side panel beside the video: the AniList entry, your progress, the sequels and a link to the episode discussion.",
+          "This week's releases for the series you're watching, with the estimated time on Crunchyroll or ADN.",
+          "Import your Crunchyroll history, with a preview before anything is written.",
+          "Redesigned settings, grouped by category, with quick toggles.",
+          "More reliable season matching: specials, OVAs and seasons split in two are no longer mixed up."
+        ]
+      },
+      "fr": {
+        "title": "Panneau latéral, agenda et import Crunchyroll",
+        "highlights": [
+          "Un panneau latéral à côté de la vidéo : la fiche AniList, ta progression, les suites et un lien vers la discussion de l'épisode.",
+          "Les sorties de la semaine pour les séries que tu regardes, avec l'heure estimée sur Crunchyroll ou ADN.",
+          "Importe ton historique Crunchyroll, avec un aperçu avant que quoi que ce soit ne soit écrit.",
+          "Réglages repensés, classés par catégorie, avec des interrupteurs rapides.",
+          "Reconnaissance des saisons plus fiable : spéciaux, OAV et saisons coupées en deux ne sont plus confondus."
+        ]
+      },
+      "de": {
+        "title": "Seitenleiste, Zeitplan und Crunchyroll-Import",
+        "highlights": [
+          "Eine Seitenleiste neben dem Video: der AniList-Eintrag, dein Fortschritt, die Fortsetzungen und ein Link zur Diskussion der Folge.",
+          "Die Neuerscheinungen der Woche für die Serien, die du schaust, mit der geschätzten Uhrzeit auf Crunchyroll oder ADN.",
+          "Importiere deinen Crunchyroll-Verlauf, mit einer Vorschau, bevor irgendetwas geschrieben wird.",
+          "Überarbeitete Einstellungen, nach Kategorien geordnet, mit Schnellschaltern.",
+          "Zuverlässigere Staffelerkennung: Specials, OVAs und zweigeteilte Staffeln werden nicht mehr verwechselt."
+        ]
+      }
+    }
+  }
+]

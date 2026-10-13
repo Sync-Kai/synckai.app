@@ -18,7 +18,20 @@ export interface Translation {
   readonly faq: { readonly title: string; readonly items: readonly FaqItem[] };
   readonly cta: { readonly title: string; readonly text: string };
   readonly mobile: MobileText;
+  readonly changelog: ChangelogText;
   readonly footer: FooterText;
+}
+
+/** Page des nouveautés (/<langue>/changelog) et badge du hero qui y mène. */
+export interface ChangelogText {
+  readonly metaTitle: string;
+  readonly metaDescription: string;
+  readonly title: string;
+  readonly lead: string;
+  /** Étiquette du badge du hero, devant le numéro de version (ex. « Nouveau »). */
+  readonly badge: string;
+  /** Lien vers le journal technique complet de l'extension. */
+  readonly full: string;
 }
 
 /** Message pour les visiteurs sur mobile, où l'extension ne s'installe pas. */

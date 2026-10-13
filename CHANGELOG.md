@@ -9,7 +9,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 - On phones and tablets, where the extension can't be installed, the install buttons give way to a short message with a "Send the link" button: it opens the system share menu, or copies the link when there is none.
 - FAQ: why the browser warns that SyncKai can read and change data on some sites, and what it actually reads.
+- What's new page (`/en/changelog`, `/fr/changelog`, `/de/changelog`): each version of the extension since 2.0.0 in a few plain sentences, in every language, with a link to the full technical changelog. A badge above the home page title announces the latest version, and the footer's "What's new" link leads to the page instead of GitHub.
 - Structured data (schema.org `SoftwareApplication`) on each language page, so search engines know SyncKai is a free browser extension.
+
+### Fixed
+
+- The header links point to the home page sections from any page, and the language menu stays on the current page.
 
 ## [1.4.0] - 2026-10-13
 

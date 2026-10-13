@@ -12,9 +12,10 @@ import {
 import { LanguageService } from '@core/i18n/language.service';
 import { BrowserEnvironment } from '@core/platform/browser-environment';
 import { SeoService } from '@core/seo/seo.service';
-import { SITE_CONFIG } from '@core/tokens';
+import { RELEASES, SITE_CONFIG } from '@core/tokens';
 import { MobileNotice, ShareOutcome, isMobileDevice } from '@domain/device';
 import { LanguageCode } from '@domain/language';
+import { localizeReleases } from '@domain/release';
 import { screenshotPath } from '@domain/screenshot';
 import {
   StoreId,
@@ -28,7 +29,7 @@ import { Header } from '@layout/header/header';
 import { ClosingCta } from './sections/closing-cta/closing-cta';
 import { Faq } from './sections/faq/faq';
 import { FeatureShowcase, ShowcaseItem } from './sections/feature-showcase/feature-showcase';
-import { Hero } from './sections/hero/hero';
+import { Hero, WhatsNewBadge } from './sections/hero/hero';
 import { HowItWorks } from './sections/how-it-works/how-it-works';
 import { Platforms } from './sections/platforms/platforms';
 import { Privacy } from './sections/privacy/privacy';
@@ -53,6 +54,7 @@ import { Privacy } from './sections/privacy/privacy';
       <sk-hero
         [hero]="t.hero"
         [note]="heroNote()"
+        [whatsNew]="whatsNew()"
         [demo]="t.demo"
         [stores]="shownStores()"
         [storeLabels]="storeLabels()"
@@ -96,6 +98,7 @@ export class LandingPage {
   private readonly seo = inject(SeoService);
   private readonly browser = inject(BrowserEnvironment);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly releases = inject(RELEASES);
 
   /** Code de langue issu de l'URL (liaison des paramètres de route). */
   readonly lang = input.required<LanguageCode>();
@@ -119,6 +122,23 @@ export class LandingPage {
       text: item.text,
       image: screenshotPath(this.site.screenshots, t.code, item.shot),
     }));
+  });
+
+  // Dernière version de l'extension, résumée dans la langue de la page.
+  private readonly latestRelease = computed(
+    () => localizeReleases(this.releases, this.translation().code, this.site.defaultLanguage)[0],
+  );
+  protected readonly whatsNew = computed((): WhatsNewBadge | null => {
+    const release = this.latestRelease();
+    const t = this.translation();
+    return release
+      ? {
+          label: t.changelog.badge,
+          version: release.version,
+          title: release.title,
+          route: ['/', t.code, 'changelog'],
+        }
+      : null;
   });
 
   // Navigateur du visiteur : inconnu au prérendu (chaîne vide), connu une fois la page chargée.
@@ -147,7 +167,7 @@ export class LandingPage {
   });
 
   constructor() {
-    effect(() => this.seo.applyLanding(this.translation()));
+    effect(() => this.seo.applyLanding(this.translation(), this.latestRelease()?.version));
     afterNextRender(() => {
       this.userAgent.set(this.browser.userAgent);
       this.maxTouchPoints.set(this.browser.maxTouchPoints);

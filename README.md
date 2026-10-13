@@ -30,12 +30,13 @@ The code follows a layered (clean) architecture. Dependencies only point inwards
 ```
 src/app/
 ├── domain/      Models and pure rules, plain TypeScript with no Angular
-├── data/        Translations (JSON) and site settings (site.config.json)
+├── data/        Translations (JSON), site settings (site.config.json), release notes (releases.json)
 ├── core/        App-wide services: language, SEO, browser access, DI tokens
 ├── shared/ui/   Reusable presentational components (icons, store buttons)
 ├── layout/      Header, footer, language menu
 └── features/
-    ├── landing/            The page (/:lang): one container, presentational sections
+    ├── landing/            The home page (/:lang): one container, presentational sections
+    ├── changelog/          The What's new page (/:lang/changelog)
     └── language-redirect/  The root page (/) and unknown URLs: sends visitors to their language
 ```
 
@@ -57,7 +58,12 @@ Conventions: one container per page reads the route and services, sections only 
 1. Copy `src/app/data/translations/en.json` to `<code>.json` (for example `es.json`) and translate every value. Set `code`, `name` (the language's own name, like *Español*) and `stores` (the locale codes the Chrome Web Store and Firefox Add-ons use).
 2. Register it in `src/app/data/translations/index.ts`.
 3. Optional: add the store screenshots as `.webp` in `public/assets/shots/<code>/` and add the code to `screenshots.languages` in `site.config.json`. Otherwise the English ones are used.
-4. Run `npm run verify`. The build fails if a text is missing, and the tests fail if a key is missing, extra or empty. The new language gets its prerendered page, its menu entry, its sitemap entry and automatic detection.
+4. Add the language to every release in `src/app/data/releases.json` (see below).
+5. Run `npm run verify`. The build fails if a text is missing, and the tests fail if a key is missing, extra or empty. The new language gets its prerendered pages, its menu entry, its sitemap entries and automatic detection.
+
+## Updating the What's new page
+
+Each time a version of the extension is published, add it at the top of `src/app/data/releases.json`: its `version`, its `date` (`YYYY-MM-DD`) and, for every language of the site, a short `title` and a few `highlights`. These are plain sentences for anime fans, not a copy of the extension's technical `CHANGELOG.md`, which the page links to. The hero badge and the structured data follow the latest version by themselves. The tests fail if a language is missing, if the languages don't have the same number of highlights, or if the versions are out of order.
 
 ## Firefox availability
 

@@ -3,6 +3,7 @@ import { provideRouter } from '@angular/router';
 import { BrowserEnvironment } from '@core/platform/browser-environment';
 import { ShareOutcome } from '@domain/device';
 import { provideSiteData } from '@core/provide-site-data';
+import releases from '@data/releases.json';
 import fr from '@data/translations/fr.json';
 import { LandingPage } from './landing-page';
 
@@ -38,6 +39,12 @@ describe('LandingPage', () => {
     readonly share?: (url: string) => Promise<ShareOutcome>;
   }
 
+  it('annonce la dernière version de l’extension, avec un lien vers les nouveautés', () => {
+    const badge = render('fr').querySelector('sk-hero a[href="/fr/changelog"]');
+    expect(badge?.textContent).toContain(`v${releases[0].version}`);
+    expect(badge?.textContent).toContain(releases[0].text.fr.title);
+  });
+
   it('décrit l’extension aux moteurs de recherche, dans la langue de la page', () => {
     render('fr');
     const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
@@ -46,6 +53,7 @@ describe('LandingPage', () => {
     expect(schema['@type']).toBe('SoftwareApplication');
     expect(schema['description']).toBe(fr.meta.description);
     expect(schema['url']).toBe('https://synckai.app/fr/');
+    expect(schema['softwareVersion']).toBe(releases[0].version);
   });
 
   async function renderAs(userAgent: string, visitor: Visitor = {}): Promise<HTMLElement> {

@@ -146,6 +146,14 @@
     "copied": "Lien copié",
     "manual": "Copie ce lien :"
   },
+  "changelog": {
+    "metaTitle": "Nouveautés de SyncKai",
+    "metaDescription": "Les dernières versions de SyncKai, l'extension qui met ta liste AniList et MyAnimeList à jour au générique : nouveautés et corrections en quelques mots.",
+    "title": "Nouveautés",
+    "lead": "Les principaux changements de chaque version de SyncKai, en quelques mots.",
+    "badge": "Nouveau",
+    "full": "Journal technique complet sur GitHub (en anglais)"
+  },
   "footer": {
     "source": "Code source",
     "creator": "Le créateur sur AniList",

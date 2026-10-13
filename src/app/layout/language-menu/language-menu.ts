@@ -41,7 +41,7 @@ import { Icon } from '@shared/ui/icon/icon';
         @for (language of languages(); track language.code) {
           <li>
             <a
-              [routerLink]="['/', language.code]"
+              [routerLink]="['/', language.code, ...page()]"
               [attr.hreflang]="language.code"
               [attr.lang]="language.code"
               [attr.aria-current]="language.code === current() ? 'true' : null"
@@ -61,6 +61,8 @@ export class LanguageMenu {
   readonly languages = input.required<readonly Language[]>();
   readonly current = input.required<LanguageCode>();
   readonly label = input.required<string>();
+  /** Page affichée, sans la langue (ex. ['changelog']) : changer de langue reste sur cette page. */
+  readonly page = input<readonly string[]>([]);
   readonly picked = output<LanguageCode>();
 
   protected readonly open = signal(false);

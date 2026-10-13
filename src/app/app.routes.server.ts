@@ -10,5 +10,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
     getPrerenderParams: () => Promise.resolve(inject(TRANSLATIONS).map((t) => ({ lang: t.code }))),
   },
+  {
+    path: ':lang/changelog',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: () => Promise.resolve(inject(TRANSLATIONS).map((t) => ({ lang: t.code }))),
+  },
   { path: '**', renderMode: RenderMode.Client },
 ];
