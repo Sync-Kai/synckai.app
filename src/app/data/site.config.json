@@ -1,0 +1,18 @@
+{
+  "url": "https://synckai.app",
+  "defaultLanguage": "en",
+  "repository": "https://github.com/Sync-Kai/SyncKai",
+  "privacyPolicy": "https://github.com/Sync-Kai/SyncKai/blob/main/PRIVACY.md",
+  "changelog": "https://github.com/Sync-Kai/SyncKai/blob/main/CHANGELOG.md",
+  "issues": "https://github.com/Sync-Kai/SyncKai/issues",
+  "author": "Quentin Geerts",
+  "year": 2026,
+  "stores": {
+    "chromeExtensionId": "khokcmigioggannjoojambdgioigdceb",
+    "firefoxAddonSlug": "synckai"
+  },
+  "screenshots": {
+    "languages": ["en", "fr", "de"],
+    "fallback": "en"
+  }
+}

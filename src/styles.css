@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+/* Jetons de design du site. Les couleurs viennent de Kai, la mascotte de l'extension. */
+@theme {
+  --color-night: #141a3d;
+  --color-night-deep: #0e1230;
+  --color-ink: #1f2a66;
+  --color-ink-line: #2e3a80;
+  --color-violet: #7c5cff;
+  --color-cyan: #46d6ff;
+  --color-moon: #eef0ff;
+  --color-mist: #aeb4dd;
+  --font-sans: 'M PLUS Rounded 1c', system-ui, sans-serif;
+  --container-wrap: 1120px;
+  --shadow-deep: 0 24px 60px rgb(5 8 30 / 0.5);
+}
+
+/* Dégradé de marque (violet vers cyan), en fond ou sur du texte. */
+@utility bg-kai {
+  background-image: linear-gradient(100deg, var(--color-violet), #4f6bff 55%, var(--color-cyan));
+}
+
+@utility text-kai {
+  background-image: linear-gradient(100deg, var(--color-violet), #4f6bff 55%, var(--color-cyan));
+  background-clip: text;
+  color: transparent;
+}
+
+/* Largeur commune à toutes les sections de la page. */
+@utility section-wrap {
+  display: block;
+  max-width: var(--container-wrap);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 40px);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    @apply bg-night font-sans text-[17px] leading-[1.65] text-moon antialiased max-sm:text-base;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply leading-[1.15] font-extrabold tracking-[-0.01em];
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 40px);
+  }
+
+  h3 {
+    @apply text-[21px] font-bold;
+  }
+
+  :focus-visible {
+    @apply rounded-md outline-3 outline-offset-3 outline-cyan;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

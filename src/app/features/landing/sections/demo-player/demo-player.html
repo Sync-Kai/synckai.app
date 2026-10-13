@@ -1,0 +1,99 @@
+<div
+  class="player overflow-hidden rounded-[22px] border border-ink-line bg-night-deep shadow-[0_30px_80px_rgb(5_8_30/0.6)]"
+>
+  <div
+    class="scene relative aspect-[16/8.2] overflow-hidden max-sm:aspect-[16/10]"
+    aria-hidden="true"
+  >
+    <div class="sky absolute inset-0"></div>
+    <div class="hill absolute -inset-x-[10%] -bottom-[30%] h-[70%]"></div>
+    <ol
+      class="roll absolute inset-0 m-0 flex list-none flex-col items-center justify-center gap-3.5 p-0 text-center text-[13px]"
+    >
+      @for (credit of credits(); track credit.role) {
+        <li class="flex flex-col">
+          <span class="text-[11px] text-mist">{{ credit.role }}</span>
+          <b class="font-medium">{{ credit.name }}</b>
+        </li>
+      }
+    </ol>
+  </div>
+  <div
+    class="bg-linear-to-b from-night-deep/40 to-night-deep px-[18px] pt-3.5 pb-4"
+    aria-hidden="true"
+  >
+    <div class="flex items-baseline gap-2.5 text-sm">
+      <strong>{{ text().series }}</strong>
+      <span class="text-mist">{{ text().season }}, {{ text().episode }} 8</span>
+    </div>
+    <div class="relative mt-3.5 mb-2 h-1.5 rounded-[3px] bg-mist/20">
+      <div class="absolute inset-y-0 left-0 rounded-[3px] bg-moon" [style.width]="progress()"></div>
+      <div
+        class="absolute -top-[5px] -bottom-[5px] w-[3px] rounded-sm bg-cyan"
+        [style.left]="creditsMark"
+      >
+        <span
+          class="absolute bottom-[calc(100%+6px)] left-1/2 -translate-x-1/2 text-[11px] font-bold whitespace-nowrap text-cyan"
+          >{{ text().credits }}</span
+        >
+      </div>
+      <div
+        class="absolute top-1/2 -mt-[7px] -ml-[7px] size-3.5 rounded-full bg-white shadow-[0_0_0_4px_rgb(255_255_255/0.18)]"
+        [style.left]="progress()"
+      ></div>
+    </div>
+    <div class="flex justify-between text-xs text-mist tabular-nums">
+      <span>{{ time() }}</span
+      ><span>{{ duration }}</span>
+    </div>
+  </div>
+</div>
+
+<div
+  class="entry relative -mt-[18px] ml-auto w-[min(330px,86%)] rounded-[18px] border border-ink-line bg-ink px-4 pt-3.5 pb-4 shadow-[0_20px_50px_rgb(5_8_30/0.55)] max-sm:mt-3 max-sm:w-full"
+  aria-live="polite"
+>
+  <div class="flex items-center justify-between text-[13px] font-medium text-mist">
+    <span>{{ text().list }}</span>
+    <button
+      type="button"
+      class="replay cursor-pointer rounded-md border-0 bg-transparent px-1.5 py-0.5 text-xs text-mist hover:text-moon"
+      (click)="play()"
+    >
+      {{ text().replay }}
+    </button>
+  </div>
+  <div class="mt-2.5 flex items-center gap-3">
+    <div class="cover h-[52px] w-[38px] shrink-0 rounded-[7px]" aria-hidden="true"></div>
+    <div class="flex min-w-0 flex-col leading-tight">
+      <strong class="truncate text-[15px]">{{ text().series }}</strong>
+      <span class="text-[13px] text-mist">{{ text().season }}</span>
+    </div>
+    <div class="ml-auto flex items-baseline text-xl font-extrabold text-mist tabular-nums">
+      <span
+        class="count relative inline-block h-[1.2em] w-[0.7em] overflow-hidden text-right leading-[1.2em] text-moon"
+      >
+        <span class="block">7</span><span class="block">8</span>
+      </span>
+      /12
+    </div>
+  </div>
+  <div class="mt-3 h-[5px] overflow-hidden rounded-[3px] bg-mist/20">
+    <div class="list-progress h-full bg-kai"></div>
+  </div>
+  @if (phase() === 'saved') {
+    <div
+      class="toast mt-3 flex items-center gap-2.5 rounded-xl border border-cyan/35 bg-cyan/10 px-3 py-2.5"
+    >
+      <span
+        class="grid size-[26px] shrink-0 place-items-center rounded-full bg-cyan text-night-deep"
+      >
+        <sk-icon name="check" class="size-[15px]" />
+      </span>
+      <div class="flex flex-col leading-tight">
+        <strong class="text-sm">{{ text().saved }}</strong>
+        <span class="text-xs text-mist">AniList, MyAnimeList</span>
+      </div>
+    </div>
+  }
+</div>

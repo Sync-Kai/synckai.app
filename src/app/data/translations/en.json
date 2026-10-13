@@ -1,0 +1,144 @@
+{
+  "code": "en",
+  "name": "English",
+  "stores": {
+    "chrome": "en",
+    "amo": "en-US"
+  },
+  "meta": {
+    "title": "SyncKai: your anime list, updated at the credits",
+    "description": "Browser extension for Chrome and Firefox. Watch anime on Crunchyroll or ADN and SyncKai updates your AniList and MyAnimeList list when the ending credits start. Free, open source, no server."
+  },
+  "nav": {
+    "features": "Features",
+    "how": "How it works",
+    "privacy": "Privacy",
+    "faq": "FAQ",
+    "language": "Language",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "title": "Your anime list, updated at the credits.",
+    "lead": "Watch on Crunchyroll or ADN as usual. When the ending credits start, SyncKai saves the episode to AniList and MyAnimeList. You never type an episode number again.",
+    "chrome": "Add to Chrome",
+    "firefox": "Add to Firefox",
+    "note": "Free and open source. Also works in Edge, Brave and other Chromium browsers."
+  },
+  "demo": {
+    "label": "Demo of an episode being synced at the ending credits",
+    "series": "Kumo no Yūbinya",
+    "season": "Season 2",
+    "episode": "Episode",
+    "credits": "Credits",
+    "roll": ["Original story", "Director", "Character design", "Music", "Animation production"],
+    "list": "Your list",
+    "saved": "Episode 8 saved",
+    "replay": "Replay"
+  },
+  "platforms": {
+    "watch": "You watch on",
+    "list": "Your list on",
+    "optional": "optional"
+  },
+  "how": {
+    "title": "Three steps, then nothing to do",
+    "steps": [
+      {
+        "title": "Install the extension",
+        "text": "From the Chrome Web Store or Firefox Add-ons. No SyncKai account to create."
+      },
+      {
+        "title": "Connect your lists",
+        "text": "AniList, MyAnimeList, or both. Each one is optional."
+      },
+      {
+        "title": "Watch your episode",
+        "text": "At the start of the credits, the episode is marked as watched. If SyncKai isn't sure about the season, it asks you once, then remembers."
+      }
+    ]
+  },
+  "features": {
+    "title": "Everything around the episode",
+    "items": [
+      {
+        "shot": "02-side-panel",
+        "title": "The episode, beside the video",
+        "text": "The side panel shows the AniList entry, your live progress before the sync, the next season to watch and a link to the episode discussion."
+      },
+      {
+        "shot": "03-agenda",
+        "title": "This week's releases",
+        "text": "The schedule lists the new episodes of the series you're watching, with the estimated time on Crunchyroll or ADN. Episodes you've already seen are ticked off."
+      },
+      {
+        "shot": "04-page-media",
+        "title": "Edit your list without leaving the page",
+        "text": "On a series page, add it to your list or change progress, status and score in a couple of clicks."
+      },
+      {
+        "shot": "05-cr-import",
+        "title": "Catch up on your history",
+        "text": "Import your Crunchyroll, ADN or Netflix history. You see a preview first, and nothing uncertain is written without your say."
+      }
+    ],
+    "moreTitle": "And also",
+    "more": [
+      "Season matching, including absolute numbering like One Piece and seasons split across several entries",
+      "Netflix and Disney+, if you turn them on (anime only)",
+      "A list of your series in progress, with the date of the next episode and +1 / −1 buttons",
+      "AniList and MyAnimeList compared side by side, aligned in one click",
+      "A rating prompt at the end of a series, and rewatch support",
+      "Alerts when a new episode of your series is out",
+      "Syncs retried automatically after a network drop",
+      "Keyboard shortcuts: Alt+Shift+K marks the current episode as watched",
+      "Backup and restore of your settings and history",
+      "Interface in English, French and German"
+    ]
+  },
+  "privacy": {
+    "title": "Nothing leaves your browser, except for your list",
+    "text": "SyncKai has no server. Your settings, history and sign-ins stay in your browser, and the extension only talks to AniList and MyAnimeList.",
+    "points": [
+      "No account with SyncKai",
+      "No analytics, no ads",
+      "Source code public under the MIT license"
+    ],
+    "link": "Read the privacy policy"
+  },
+  "faq": {
+    "title": "Questions",
+    "items": [
+      {
+        "q": "Which browsers are supported?",
+        "a": "Chrome 116 or later, plus Edge, Brave and other Chromium browsers through the Chrome Web Store. Firefox 142 or later on desktop."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, completely. No paid version, no ads."
+      },
+      {
+        "q": "My episode wasn't synced. What should I do?",
+        "a": "Open the SyncKai popup: the status bar tells you if a match needs checking, a sync is pending or a session expired. After updating the extension, reload the player tab. As a last resort, Alt+Shift+K marks the current episode as watched."
+      },
+      {
+        "q": "SyncKai picked the wrong season.",
+        "a": "In Activity › Recent syncs, click Fix and choose the right entry. SyncKai remembers it for the next episodes. Then use −1 to undo the wrong progress."
+      },
+      {
+        "q": "Do I need both AniList and MyAnimeList?",
+        "a": "No. Connect one or the other, or both: each account is optional."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Your next episode is already synced.",
+    "text": "Install SyncKai, connect your list, and press play."
+  },
+  "footer": {
+    "source": "Source code",
+    "issues": "Report a bug",
+    "changelog": "Changelog",
+    "privacy": "Privacy policy",
+    "disclaimer": "SyncKai is not affiliated with Crunchyroll, ADN, Netflix, Disney+, AniList or MyAnimeList."
+  }
+}

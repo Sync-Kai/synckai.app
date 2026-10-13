@@ -1,0 +1,144 @@
+{
+  "code": "fr",
+  "name": "Français",
+  "stores": {
+    "chrome": "fr",
+    "amo": "fr"
+  },
+  "meta": {
+    "title": "SyncKai : ta liste d'animes à jour dès le générique",
+    "description": "Extension pour Chrome et Firefox. Regarde tes animes sur Crunchyroll ou ADN : SyncKai met à jour ta liste AniList et MyAnimeList au début du générique de fin. Gratuite, open source, sans serveur."
+  },
+  "nav": {
+    "features": "Fonctionnalités",
+    "how": "Comment ça marche",
+    "privacy": "Confidentialité",
+    "faq": "FAQ",
+    "language": "Langue",
+    "skip": "Aller au contenu"
+  },
+  "hero": {
+    "title": "Ta liste d'animes, à jour dès le générique.",
+    "lead": "Regarde sur Crunchyroll ou ADN comme d'habitude. Au début du générique de fin, SyncKai enregistre l'épisode sur AniList et MyAnimeList. Tu ne tapes plus jamais un numéro d'épisode.",
+    "chrome": "Ajouter à Chrome",
+    "firefox": "Ajouter à Firefox",
+    "note": "Gratuit et open source. Fonctionne aussi sur Edge, Brave et les autres navigateurs Chromium."
+  },
+  "demo": {
+    "label": "Démonstration d'un épisode synchronisé au générique de fin",
+    "series": "Kumo no Yūbinya",
+    "season": "Saison 2",
+    "episode": "Épisode",
+    "credits": "Générique",
+    "roll": ["Œuvre originale", "Réalisation", "Character design", "Musique", "Studio d'animation"],
+    "list": "Ta liste",
+    "saved": "Épisode 8 enregistré",
+    "replay": "Rejouer"
+  },
+  "platforms": {
+    "watch": "Tu regardes sur",
+    "list": "Ta liste sur",
+    "optional": "en option"
+  },
+  "how": {
+    "title": "Trois étapes, puis plus rien à faire",
+    "steps": [
+      {
+        "title": "Installe l'extension",
+        "text": "Depuis le Chrome Web Store ou Firefox Add-ons. Aucun compte SyncKai à créer."
+      },
+      {
+        "title": "Connecte tes listes",
+        "text": "AniList, MyAnimeList, ou les deux. Chaque compte est facultatif."
+      },
+      {
+        "title": "Regarde ton épisode",
+        "text": "Au début du générique, l'épisode est marqué comme vu. Si SyncKai hésite sur la saison, il te demande une fois, puis il s'en souvient."
+      }
+    ]
+  },
+  "features": {
+    "title": "Tout ce qui entoure l'épisode",
+    "items": [
+      {
+        "shot": "02-side-panel",
+        "title": "L'épisode, à côté de la vidéo",
+        "text": "Le panneau latéral affiche la fiche AniList, ta progression en direct avant la synchro, la saison suivante à regarder et un lien vers la discussion de l'épisode."
+      },
+      {
+        "shot": "03-agenda",
+        "title": "Les sorties de la semaine",
+        "text": "L'agenda liste les nouveaux épisodes de tes séries en cours, avec l'heure estimée sur Crunchyroll ou ADN. Les épisodes déjà vus sont cochés."
+      },
+      {
+        "shot": "04-page-media",
+        "title": "Modifie ta liste sans quitter la page",
+        "text": "Sur une page de série, ajoute-la à ta liste ou change la progression, le statut et la note en quelques clics."
+      },
+      {
+        "shot": "05-cr-import",
+        "title": "Rattrape ton historique",
+        "text": "Importe ton historique Crunchyroll, ADN ou Netflix. Tu vois d'abord un aperçu, et rien d'incertain n'est écrit sans ton accord."
+      }
+    ],
+    "moreTitle": "Et aussi",
+    "more": [
+      "Reconnaissance des saisons, y compris la numérotation absolue comme One Piece et les saisons découpées en plusieurs fiches",
+      "Netflix et Disney+, si tu les actives (animes uniquement)",
+      "La liste de tes séries en cours, avec la date du prochain épisode et des boutons +1 / −1",
+      "AniList et MyAnimeList comparés côte à côte, alignés en un clic",
+      "Une note proposée en fin de série, et la prise en charge du revisionnage",
+      "Des alertes à la sortie d'un nouvel épisode de tes séries",
+      "Les synchros relancées automatiquement après une coupure réseau",
+      "Des raccourcis clavier : Alt+Maj+K valide l'épisode en cours",
+      "La sauvegarde et la restauration de tes réglages et de ton historique",
+      "Une interface en français, anglais et allemand"
+    ]
+  },
+  "privacy": {
+    "title": "Rien ne quitte ton navigateur, sauf ta liste",
+    "text": "SyncKai n'a pas de serveur. Tes réglages, ton historique et tes connexions restent dans ton navigateur, et l'extension ne parle qu'à AniList et MyAnimeList.",
+    "points": [
+      "Aucun compte SyncKai",
+      "Pas de statistiques, pas de publicité",
+      "Code source public sous licence MIT"
+    ],
+    "link": "Lire la politique de confidentialité"
+  },
+  "faq": {
+    "title": "Questions",
+    "items": [
+      {
+        "q": "Quels navigateurs sont pris en charge ?",
+        "a": "Chrome 116 ou plus récent, ainsi qu'Edge, Brave et les autres navigateurs Chromium via le Chrome Web Store. Firefox 142 ou plus récent sur ordinateur."
+      },
+      {
+        "q": "Est-ce que c'est gratuit ?",
+        "a": "Oui, entièrement. Pas de version payante, pas de publicité."
+      },
+      {
+        "q": "Mon épisode n'a pas été synchronisé. Que faire ?",
+        "a": "Ouvre le popup SyncKai : la barre d'état indique si une correspondance est à vérifier, si une synchro est en attente ou si une session a expiré. Après une mise à jour de l'extension, recharge l'onglet du lecteur. En dernier recours, Alt+Maj+K valide l'épisode en cours."
+      },
+      {
+        "q": "SyncKai a choisi la mauvaise saison.",
+        "a": "Dans Activité › Dernières synchros, clique sur Corriger et choisis la bonne fiche. SyncKai s'en souvient pour les épisodes suivants. Utilise ensuite −1 pour annuler la progression enregistrée par erreur."
+      },
+      {
+        "q": "Faut-il AniList et MyAnimeList ?",
+        "a": "Non. Connecte l'un ou l'autre, ou les deux : chaque compte est facultatif."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ton prochain épisode est déjà synchronisé.",
+    "text": "Installe SyncKai, connecte ta liste, et lance la lecture."
+  },
+  "footer": {
+    "source": "Code source",
+    "issues": "Signaler un bug",
+    "changelog": "Nouveautés",
+    "privacy": "Politique de confidentialité",
+    "disclaimer": "SyncKai n'est affilié ni à Crunchyroll, ni à ADN, ni à Netflix, ni à Disney+, ni à AniList, ni à MyAnimeList."
+  }
+}
