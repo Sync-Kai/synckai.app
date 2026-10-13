@@ -38,6 +38,16 @@ describe('LandingPage', () => {
     readonly share?: (url: string) => Promise<ShareOutcome>;
   }
 
+  it('décrit l’extension aux moteurs de recherche, dans la langue de la page', () => {
+    render('fr');
+    const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
+    expect(scripts).toHaveLength(1);
+    const schema = JSON.parse(scripts[0].textContent ?? '{}') as Record<string, unknown>;
+    expect(schema['@type']).toBe('SoftwareApplication');
+    expect(schema['description']).toBe(fr.meta.description);
+    expect(schema['url']).toBe('https://synckai.app/fr/');
+  });
+
   async function renderAs(userAgent: string, visitor: Visitor = {}): Promise<HTMLElement> {
     TestBed.configureTestingModule({
       providers: [

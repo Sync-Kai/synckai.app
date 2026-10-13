@@ -1,5 +1,6 @@
 import { DOCUMENT, Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { JsonLd, serializeJsonLd, softwareApplicationSchema } from '@domain/structured-data';
 import { Translation } from '@domain/translation';
 import { SITE_CONFIG, TRANSLATIONS } from '../tokens';
 
@@ -28,6 +29,7 @@ export class SeoService {
     this.setMeta('property', 'og:locale', t.code);
     this.setMeta('name', 'twitter:card', 'summary_large_image');
     this.setLinks([{ rel: 'canonical', href: url }, ...this.alternates()]);
+    this.setJsonLd(softwareApplicationSchema(this.site, t, url));
   }
 
   /** Décrit la page racine, qui envoie seulement le visiteur vers sa langue. */
@@ -36,6 +38,7 @@ export class SeoService {
       { rel: 'canonical', href: this.pageUrl(this.site.defaultLanguage) },
       ...this.alternates(),
     ]);
+    this.setJsonLd(null);
   }
 
   private pageUrl(code: string): string {
@@ -55,6 +58,20 @@ export class SeoService {
 
   private setMeta(attr: 'name' | 'property', key: string, content: string): void {
     this.meta.updateTag({ [attr]: key, content }, `${attr}="${key}"`);
+  }
+
+  /** Remplace le bloc JSON-LD de la page (un seul à la fois), ou le retire avec null. */
+  private setJsonLd(data: JsonLd | null): void {
+    const head = this.document.head;
+    head.querySelectorAll(`script[${MANAGED}]`).forEach((el) => el.remove());
+    if (!data) {
+      return;
+    }
+    const script = this.document.createElement('script');
+    script.setAttribute(MANAGED, '');
+    script.type = 'application/ld+json';
+    script.textContent = serializeJsonLd(data);
+    head.appendChild(script);
   }
 
   private setLinks(links: LinkSpec[]): void {

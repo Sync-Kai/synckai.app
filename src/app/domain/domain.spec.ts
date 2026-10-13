@@ -2,6 +2,9 @@ import { isMobileDevice } from './device';
 import { pickLanguage } from './language';
 import { formatPlaybackTime, interpolate } from './playback';
 import { screenshotPath } from './screenshot';
+import { SiteConfig } from './site';
+import { serializeJsonLd, softwareApplicationSchema } from './structured-data';
+import { Translation } from './translation';
 import {
   StoreLink,
   browserFamily,
@@ -230,5 +233,50 @@ describe('isMobileDevice', () => {
     ).toBe(false);
     expect(isMobileDevice('Googlebot/2.1 (+http://www.google.com/bot.html)', 0)).toBe(false);
     expect(isMobileDevice('', 0)).toBe(false);
+  });
+});
+
+describe('softwareApplicationSchema', () => {
+  const site = {
+    url: 'https://synckai.app',
+    repository: 'https://github.com/Sync-Kai/SyncKai',
+    author: 'Quentin Geerts',
+    authorAnilist: 'https://anilist.co/user/Oyumiro/',
+    stores: { chromeExtensionId: 'abc', firefoxAddonSlug: 'synckai', firefoxPublished: false },
+  } as SiteConfig;
+  const t = {
+    code: 'fr',
+    stores: { chrome: 'fr', amo: 'fr' },
+    meta: { title: 'Titre', description: 'Description' },
+  } as Translation;
+
+  it('décrit une extension gratuite, dans la langue de la page', () => {
+    const schema = softwareApplicationSchema(site, t, 'https://synckai.app/fr/', '2.3.1');
+    expect(schema).toMatchObject({
+      '@type': 'SoftwareApplication',
+      name: 'SyncKai',
+      description: 'Description',
+      url: 'https://synckai.app/fr/',
+      inLanguage: 'fr',
+      applicationCategory: 'BrowserApplication',
+      softwareVersion: '2.3.1',
+      offers: { price: '0' },
+    });
+  });
+
+  it('ne donne comme lien d’installation que les stores publics', () => {
+    expect(softwareApplicationSchema(site, t, '')['installUrl']).toEqual([
+      'https://chromewebstore.google.com/detail/abc?hl=fr',
+    ]);
+    const published = { ...site, stores: { ...site.stores, firefoxPublished: true } };
+    expect(softwareApplicationSchema(published, t, '')['installUrl']).toHaveLength(2);
+  });
+
+  it('omet la version quand elle est inconnue', () => {
+    expect(softwareApplicationSchema(site, t, '')).not.toHaveProperty('softwareVersion');
+  });
+
+  it('échappe « < » pour qu’aucun texte ne ferme la balise script', () => {
+    expect(serializeJsonLd({ name: '</script>' })).toBe('{"name":"\\u003c/script>"}');
   });
 });
