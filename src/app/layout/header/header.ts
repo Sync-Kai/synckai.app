@@ -2,14 +2,15 @@ import { ChangeDetectionStrategy, Component, computed, input, output } from '@an
 import { RouterLink } from '@angular/router';
 import { Language, LanguageCode } from '@domain/language';
 import { NavText } from '@domain/translation';
-import { ExternalLink } from '@shared/ui/external-link/external-link';
-import { Icon, IconName } from '@shared/ui/icon/icon';
 import { LanguageMenu } from '../language-menu/language-menu';
 
-/** En-tête collant : logo, ancres vers les sections, liens GitHub et AniList, menu des langues. */
+/**
+ * En-tête collant : logo, ancres vers les sections et menu des langues.
+ * Les liens vers d'autres sites (GitHub, AniList) restent dans le pied de page, pour garder l'en-tête centré sur la page.
+ */
 @Component({
   selector: 'sk-header',
-  imports: [RouterLink, LanguageMenu, ExternalLink, Icon],
+  imports: [RouterLink, LanguageMenu],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class:
@@ -41,21 +42,8 @@ import { LanguageMenu } from '../language-menu/language-menu';
         >
       }
     </nav>
-    <div class="flex items-center gap-1 max-[900px]:ml-auto">
-      @for (link of profiles(); track link.url) {
-        <a
-          skExternal
-          [href]="link.url"
-          [attr.aria-label]="link.label"
-          [title]="link.label"
-          class="flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[15px] font-medium text-mist no-underline hover:bg-violet/15 hover:text-moon"
-        >
-          <sk-icon [name]="link.icon" class="size-[18px]" />
-          <span class="max-sm:hidden">{{ link.name }}</span>
-        </a>
-      }
-    </div>
     <sk-language-menu
+      class="max-[900px]:ml-auto"
       [languages]="languages()"
       [current]="current()"
       [label]="nav().language"
@@ -67,17 +55,7 @@ export class Header {
   readonly nav = input.required<NavText>();
   readonly languages = input.required<readonly Language[]>();
   readonly current = input.required<LanguageCode>();
-  readonly repositoryUrl = input.required<string>();
-  readonly anilistUrl = input.required<string>();
   readonly languagePicked = output<LanguageCode>();
-
-  // Liens vers d'autres sites : nom visible court, libellé complet pour les lecteurs d'écran.
-  protected readonly profiles = computed(
-    (): { url: string; name: string; label: string; icon: IconName }[] => [
-      { url: this.repositoryUrl(), name: 'GitHub', label: this.nav().github, icon: 'code' },
-      { url: this.anilistUrl(), name: 'AniList', label: this.nav().anilist, icon: 'profile' },
-    ],
-  );
 
   // Même ordre que les sections de la page (vérifié par landing-page.spec.ts).
   protected readonly links = computed(() => {

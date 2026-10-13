@@ -10,20 +10,13 @@ describe('Header', () => {
     fixture.componentRef.setInput('nav', en.nav);
     fixture.componentRef.setInput('languages', [{ code: 'en', name: 'English' }]);
     fixture.componentRef.setInput('current', 'en');
-    fixture.componentRef.setInput('repositoryUrl', 'https://github.com/example/repo');
-    fixture.componentRef.setInput('anilistUrl', 'https://anilist.co/user/example/');
     fixture.detectChanges();
     return fixture.nativeElement as HTMLElement;
   }
 
-  it('lie le dépôt GitHub et le profil AniList, dans un nouvel onglet', () => {
-    const external = Array.from(render().querySelectorAll('a[target="_blank"]'));
-    expect(external.map((a) => [a.getAttribute('href'), a.getAttribute('aria-label')])).toEqual([
-      ['https://github.com/example/repo', en.nav.github],
-      ['https://anilist.co/user/example/', en.nav.anilist],
-    ]);
-    for (const anchor of external) {
-      expect(anchor.getAttribute('rel')).toBe('noopener noreferrer');
-    }
+  it('ne contient que des liens internes : la navigation reste sur la page', () => {
+    const header = render();
+    expect(header.querySelectorAll('a[target="_blank"]').length).toBe(0);
+    expect(header.querySelectorAll('a[href^="http"]').length).toBe(0);
   });
 });

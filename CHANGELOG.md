@@ -5,6 +5,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+### Changed
+
+- The GitHub and AniList links are back in the footer only: the header keeps to the page navigation and the language menu.
+
 ### Fixed
 
 - The Privacy link no longer scrolls the privacy box partly under the sticky header: the section is spaced from the inside, like the others, so it lands at the same distance below the header.

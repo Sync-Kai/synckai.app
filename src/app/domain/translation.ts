@@ -30,10 +30,6 @@ export interface NavText {
   readonly how: string;
   readonly privacy: string;
   readonly faq: string;
-  /** Libellé accessible du lien vers le dépôt GitHub. */
-  readonly github: string;
-  /** Libellé accessible du lien vers le profil AniList du créateur. */
-  readonly anilist: string;
   readonly language: string;
   readonly skip: string;
 }

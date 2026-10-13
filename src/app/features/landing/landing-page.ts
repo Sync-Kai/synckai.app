@@ -39,8 +39,6 @@ import { Privacy } from './sections/privacy/privacy';
       [nav]="t.nav"
       [languages]="languages.languages"
       [current]="t.code"
-      [repositoryUrl]="site.repository"
-      [anilistUrl]="site.authorAnilist"
       (languagePicked)="languages.remember($event)"
     />
     <main id="main">
