@@ -1,7 +1,15 @@
 import { pickLanguage } from './language';
 import { formatPlaybackTime, interpolate } from './playback';
 import { screenshotPath } from './screenshot';
-import { StoreLink, preferredStore, storeLinks, visitorStore, visitorStorePending } from './store';
+import {
+  StoreLink,
+  browserFamily,
+  preferredStore,
+  storeLinks,
+  visibleStores,
+  visitorStore,
+  visitorStorePending,
+} from './store';
 
 describe('pickLanguage', () => {
   const available = ['en', 'fr', 'de'];
@@ -99,6 +107,57 @@ describe('visitorStorePending', () => {
   it('ne signale rien pour les autres navigateurs, ni pendant le prérendu', () => {
     expect(visitorStorePending(chromeUa, links(false))).toBe(false);
     expect(visitorStorePending('', links(false))).toBe(false);
+  });
+});
+
+describe('browserFamily', () => {
+  const agents = {
+    firefox: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:142.0) Gecko/20100101 Firefox/142.0',
+    chrome:
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+    edge: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0',
+    opera:
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 OPR/125.0.0.0',
+    safari:
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/19.0 Safari/605.1.15',
+  };
+
+  it('reconnaît Firefox', () => {
+    expect(browserFamily(agents.firefox)).toBe('firefox');
+  });
+
+  it('range Chrome, Brave, Edge et Opera parmi les navigateurs Chromium', () => {
+    expect(browserFamily(agents.chrome)).toBe('chromium');
+    expect(browserFamily(agents.edge)).toBe('chromium');
+    expect(browserFamily(agents.opera)).toBe('chromium');
+  });
+
+  it('classe Safari, les robots et le prérendu comme inconnus', () => {
+    expect(browserFamily(agents.safari)).toBe('other');
+    expect(browserFamily('Googlebot/2.1 (+http://www.google.com/bot.html)')).toBe('other');
+    expect(browserFamily('')).toBe('other');
+  });
+
+  describe('visibleStores', () => {
+    const links = storeLinks(
+      { chromeExtensionId: 'abc', firefoxAddonSlug: 'synckai', firefoxPublished: false },
+      { chrome: 'en', amo: 'en-US' },
+    );
+    const ids = (userAgent: string): string[] => visibleStores(userAgent, links).map((l) => l.id);
+
+    it('ne propose que Firefox sur Firefox, même pas encore publié', () => {
+      expect(ids(agents.firefox)).toEqual(['firefox']);
+    });
+
+    it('ne propose que Chrome sur les navigateurs Chromium', () => {
+      expect(ids(agents.chrome)).toEqual(['chrome']);
+      expect(ids(agents.edge)).toEqual(['chrome']);
+    });
+
+    it('propose les deux quand le navigateur est inconnu', () => {
+      expect(ids(agents.safari)).toEqual(['chrome', 'firefox']);
+      expect(ids('')).toEqual(['chrome', 'firefox']);
+    });
   });
 });
 

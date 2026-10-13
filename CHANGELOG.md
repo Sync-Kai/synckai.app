@@ -5,6 +5,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+### Changed
+
+- Install buttons follow the visitor's browser: Firefox only on Firefox ("Coming soon to Firefox" while the add-on awaits Mozilla), Chrome only on Chromium browsers (Chrome, Brave, Edge, Opera…). Unknown browsers, search engines and the prerendered HTML still show both.
+
 ## [1.3.0] - 2026-10-13
 
 ### Added

@@ -70,4 +70,29 @@ describe('LandingPage', () => {
     expect(hero).toContain(fr.hero.note);
     expect(hero).not.toContain(fr.hero.noteFirefoxPending);
   });
+
+  it('ne montre que Firefox à un visiteur Firefox', async () => {
+    const page = await renderAs(
+      'Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0',
+    );
+    const hero = page.querySelector('sk-hero')!;
+    expect(hero.querySelector('a[href*="chromewebstore"]')).toBeNull();
+    expect(hero.textContent).toContain(fr.hero.firefoxPending);
+  });
+
+  it('ne montre que Chrome à un visiteur Chromium', async () => {
+    const page = await renderAs(
+      'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36',
+    );
+    const hero = page.querySelector('sk-hero')!;
+    expect(hero.querySelector('a[href*="chromewebstore"]')).not.toBeNull();
+    expect(hero.textContent).not.toContain(fr.hero.firefoxPending);
+  });
+
+  it('montre les deux quand le navigateur est inconnu', async () => {
+    const page = await renderAs('Googlebot/2.1 (+http://www.google.com/bot.html)');
+    const hero = page.querySelector('sk-hero')!;
+    expect(hero.querySelector('a[href*="chromewebstore"]')).not.toBeNull();
+    expect(hero.textContent).toContain(fr.hero.firefoxPending);
+  });
 });

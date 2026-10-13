@@ -53,3 +53,33 @@ export function visitorStorePending(userAgent: string, links: readonly StoreLink
   const wanted = visitorStore(userAgent);
   return links.some((link) => link.id === wanted && !link.available);
 }
+
+/** Famille du navigateur : « other » couvre Safari, les robots et le prérendu (chaîne vide). */
+export type BrowserFamily = 'firefox' | 'chromium' | 'other';
+
+export function browserFamily(userAgent: string): BrowserFamily {
+  if (/firefox\/|fxios\//i.test(userAgent)) {
+    return 'firefox';
+  }
+  // Chrome, Brave, Edge, Opera et Vivaldi annoncent tous « Chrome/ » ; Chrome sur iOS annonce « CriOS/ ».
+  if (/chrome\/|chromium\/|crios\//i.test(userAgent)) {
+    return 'chromium';
+  }
+  return 'other';
+}
+
+/**
+ * Stores à proposer au visiteur : seulement celui de son navigateur quand on le reconnaît
+ * (Firefox ou Chromium), sinon tous (navigateur inconnu, robots, prérendu).
+ */
+export function visibleStores(
+  userAgent: string,
+  links: readonly StoreLink[],
+): readonly StoreLink[] {
+  const family = browserFamily(userAgent);
+  if (family === 'other') {
+    return links;
+  }
+  const own: StoreId = family === 'firefox' ? 'firefox' : 'chrome';
+  return links.filter((link) => link.id === own);
+}
