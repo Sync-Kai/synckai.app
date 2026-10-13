@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-10-13
+
 ### Added
 
 - On phones and tablets, where the extension can't be installed, the install buttons give way to a short message with a "Send the link" button: it opens the system share menu, or copies the link when there is none.
