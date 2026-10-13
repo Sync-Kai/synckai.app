@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-13
+
 ### Changed
 
 - Rebuilt the site with Angular 22 (standalone components, signals, zoneless, `OnPush`) and Tailwind CSS 4, prerendered to static HTML for every language. Same content and design as the first version.
