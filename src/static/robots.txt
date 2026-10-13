@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://synckai.app/sitemap.xml
