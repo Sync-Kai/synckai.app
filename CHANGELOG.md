@@ -9,6 +9,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 - Hosting moved from GitHub Pages to Cloudflare Pages: the repository can stay private. The build now runs `npm run verify` before publishing, and branches get preview URLs.
 - Short links (`/chrome`, `/firefox`, `/github`, `/privacy`) are now server redirects instead of HTML pages.
+- Links to other sites (stores, GitHub, privacy policy) open in a new tab, with `rel="noopener noreferrer"`.
 
 ### Added
 

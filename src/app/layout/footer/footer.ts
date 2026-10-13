@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { Language, LanguageCode } from '@domain/language';
 import { SiteConfig } from '@domain/site';
 import { FooterText } from '@domain/translation';
+import { ExternalLink } from '@shared/ui/external-link/external-link';
 
 /** Pied de page : liens du projet, langues, avertissement et licence. */
 @Component({
   selector: 'sk-footer',
-  imports: [RouterLink],
+  imports: [RouterLink, ExternalLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'block border-t border-ink-line px-[clamp(16px,4vw,40px)] pt-9 pb-12 text-sm text-mist',
@@ -16,7 +17,7 @@ import { FooterText } from '@domain/translation';
     <div class="mx-auto max-w-wrap space-y-3.5">
       <nav [attr.aria-label]="text().source" class="flex flex-wrap gap-x-6 gap-y-2">
         @for (link of links(); track link.url) {
-          <a [href]="link.url" class="no-underline hover:text-moon hover:underline">{{
+          <a skExternal [href]="link.url" class="no-underline hover:text-moon hover:underline">{{
             link.label
           }}</a>
         }

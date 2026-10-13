@@ -27,6 +27,13 @@ describe('StoreButtons', () => {
     ]);
   });
 
+  it('ouvre les stores dans un nouvel onglet, sans transmettre la page d’origine', () => {
+    for (const anchor of render('chrome')) {
+      expect(anchor.getAttribute('target')).toBe('_blank');
+      expect(anchor.getAttribute('rel')).toBe('noopener noreferrer');
+    }
+  });
+
   it('place le store préféré en premier et le met en évidence', () => {
     const anchors = render('firefox');
     expect(anchors[0].textContent?.trim()).toBe('Add to Firefox');

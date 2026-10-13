@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { PrivacyText } from '@domain/translation';
+import { ExternalLink } from '@shared/ui/external-link/external-link';
 import { Icon } from '@shared/ui/icon/icon';
 
 @Component({
   selector: 'sk-privacy',
-  imports: [Icon],
+  imports: [Icon, ExternalLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { id: 'privacy', class: 'section-wrap mt-30' },
   template: `
@@ -29,9 +30,12 @@ import { Icon } from '@shared/ui/icon/icon';
             </li>
           }
         </ul>
-        <a [href]="policyUrl()" class="mt-6 inline-block font-bold text-cyan underline-offset-4">{{
-          text().link
-        }}</a>
+        <a
+          skExternal
+          [href]="policyUrl()"
+          class="mt-6 inline-block font-bold text-cyan underline-offset-4"
+          >{{ text().link }}</a
+        >
       </div>
     </div>
   `,

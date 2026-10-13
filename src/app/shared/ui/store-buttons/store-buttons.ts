@@ -1,16 +1,18 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { StoreId, StoreLink } from '@domain/store';
+import { ExternalLink } from '../external-link/external-link';
 import { Icon } from '../icon/icon';
 
 /** Boutons d'installation ; le store du navigateur du visiteur passe en premier et en évidence. */
 @Component({
   selector: 'sk-store-buttons',
-  imports: [Icon],
+  imports: [Icon, ExternalLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'flex flex-wrap gap-3' },
   template: `
     @for (store of ordered(); track store.id) {
       <a
+        skExternal
         [href]="store.url"
         class="inline-flex items-center gap-2.5 rounded-full border-[1.5px] px-[22px] py-[13px] font-bold no-underline transition active:translate-y-px max-sm:flex-[1_1_100%] max-sm:justify-center"
         [class]="
