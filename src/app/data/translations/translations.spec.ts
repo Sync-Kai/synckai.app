@@ -58,8 +58,9 @@ describe('traductions', () => {
         expect(emptyTexts(translation as unknown as Json)).toEqual([]);
       });
 
-      it('garde le même nombre d’étapes et de fonctionnalités illustrées', () => {
+      it('garde le même nombre d’étapes, de fonctionnalités illustrées et de questions', () => {
         expect(translation.how.steps.length).toBe(reference.how.steps.length);
+        expect(translation.faq.items.length).toBe(reference.faq.items.length);
         expect(translation.features.items.map((i) => i.shot)).toEqual(
           reference.features.items.map((i) => i.shot),
         );

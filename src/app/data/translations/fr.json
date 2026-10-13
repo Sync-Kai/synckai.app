@@ -119,6 +119,10 @@
         "a": "Oui, entièrement. Pas de version payante, pas de publicité."
       },
       {
+        "q": "Pourquoi mon navigateur dit que SyncKai peut lire et modifier mes données sur certains sites ?",
+        "a": "C'est l'avertissement standard pour toute extension qui agit sur un site. SyncKai s'en sert sur Crunchyroll et ADN pour lire le titre, la saison, le numéro de l'épisode et la position de lecture, et pour y afficher ses notifications. Il envoie ensuite ta progression à AniList et MyAnimeList. Il ne lit rien d'autre et ne tourne sur aucun autre site. Netflix et Disney+ ne sont demandés que si tu les actives, et l'accès est retiré quand tu les désactives."
+      },
+      {
         "q": "Mon épisode n'a pas été synchronisé. Que faire ?",
         "a": "Ouvre le popup SyncKai : la barre d'état indique si une correspondance est à vérifier, si une synchro est en attente ou si une session a expiré. Après une mise à jour de l'extension, recharge l'onglet du lecteur. En dernier recours, Alt+Maj+K valide l'épisode en cours."
       },

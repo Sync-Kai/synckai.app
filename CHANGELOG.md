@@ -8,6 +8,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 ### Added
 
 - On phones and tablets, where the extension can't be installed, the install buttons give way to a short message with a "Send the link" button: it opens the system share menu, or copies the link when there is none.
+- FAQ: why the browser warns that SyncKai can read and change data on some sites, and what it actually reads.
 
 ## [1.4.0] - 2026-10-13
 
