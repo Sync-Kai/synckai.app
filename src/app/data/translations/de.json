@@ -14,6 +14,8 @@
     "how": "So funktioniert's",
     "privacy": "Datenschutz",
     "faq": "FAQ",
+    "github": "Quellcode auf GitHub",
+    "anilist": "AniList-Profil des Entwicklers",
     "language": "Sprache",
     "skip": "Zum Inhalt springen"
   },
@@ -137,6 +139,7 @@
   },
   "footer": {
     "source": "Quellcode",
+    "creator": "Der Entwickler auf AniList",
     "issues": "Fehler melden",
     "changelog": "Änderungen",
     "privacy": "Datenschutzerklärung",

@@ -14,6 +14,8 @@
     "how": "How it works",
     "privacy": "Privacy",
     "faq": "FAQ",
+    "github": "Source code on GitHub",
+    "anilist": "The creator's AniList profile",
     "language": "Language",
     "skip": "Skip to content"
   },
@@ -137,6 +139,7 @@
   },
   "footer": {
     "source": "Source code",
+    "creator": "The creator on AniList",
     "issues": "Report a bug",
     "changelog": "Changelog",
     "privacy": "Privacy policy",

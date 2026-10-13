@@ -4,11 +4,12 @@ import { Language, LanguageCode } from '@domain/language';
 import { SiteConfig } from '@domain/site';
 import { FooterText } from '@domain/translation';
 import { ExternalLink } from '@shared/ui/external-link/external-link';
+import { Icon, IconName } from '@shared/ui/icon/icon';
 
 /** Pied de page : liens du projet, langues, avertissement et licence. */
 @Component({
   selector: 'sk-footer',
-  imports: [RouterLink, ExternalLink],
+  imports: [RouterLink, ExternalLink, Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'block border-t border-ink-line px-[clamp(16px,4vw,40px)] pt-9 pb-12 text-sm text-mist',
@@ -17,9 +18,16 @@ import { ExternalLink } from '@shared/ui/external-link/external-link';
     <div class="mx-auto max-w-wrap space-y-3.5">
       <nav [attr.aria-label]="text().source" class="flex flex-wrap gap-x-6 gap-y-2">
         @for (link of links(); track link.url) {
-          <a skExternal [href]="link.url" class="no-underline hover:text-moon hover:underline">{{
-            link.label
-          }}</a>
+          <a
+            skExternal
+            [href]="link.url"
+            class="inline-flex items-center gap-1.5 no-underline hover:text-moon hover:underline"
+          >
+            @if (link.icon) {
+              <sk-icon [name]="link.icon" class="size-4" />
+            }
+            {{ link.label }}
+          </a>
         }
       </nav>
       <nav [attr.aria-label]="languageLabel()" class="flex flex-wrap gap-x-6 gap-y-2">
@@ -48,11 +56,12 @@ export class Footer {
   readonly languageLabel = input.required<string>();
   readonly languagePicked = output<LanguageCode>();
 
-  protected readonly links = computed(() => {
+  protected readonly links = computed((): { url: string; label: string; icon?: IconName }[] => {
     const text = this.text();
     const site = this.site();
     return [
-      { url: site.repository, label: text.source },
+      { url: site.repository, label: text.source, icon: 'code' },
+      { url: site.authorAnilist, label: text.creator, icon: 'profile' },
       { url: site.issues, label: text.issues },
       { url: site.changelog, label: text.changelog },
       { url: site.privacyPolicy, label: text.privacy },

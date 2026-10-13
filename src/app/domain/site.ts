@@ -11,6 +11,8 @@ export interface SiteConfig {
   readonly changelog: string;
   readonly issues: string;
   readonly author: string;
+  /** Profil AniList du créateur, lié depuis l'en-tête et le pied de page. */
+  readonly authorAnilist: string;
   readonly year: number;
   readonly stores: StoreListings;
   readonly screenshots: ScreenshotSet;

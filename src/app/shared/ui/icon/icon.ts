@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-export type IconName = 'chrome' | 'firefox' | 'check' | 'globe';
+export type IconName = 'chrome' | 'firefox' | 'check' | 'globe' | 'code' | 'profile';
 
 /** Icône décorative en SVG ; la taille vient des classes posées sur l'élément hôte. */
 @Component({
@@ -41,6 +41,30 @@ export type IconName = 'chrome' | 'firefox' | 'check' | 'globe';
             stroke-width="2.2"
             stroke-linecap="round"
             stroke-linejoin="round"
+          />
+        </svg>
+      }
+      @case ('code') {
+        <svg viewBox="0 0 24 24" class="size-full">
+          <path
+            d="M8.5 7 3.5 12l5 5M15.5 7l5 5-5 5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      }
+      @case ('profile') {
+        <svg viewBox="0 0 24 24" class="size-full">
+          <circle cx="12" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2" />
+          <path
+            d="M5 19.5c1.3-3.3 3.9-5 7-5s5.7 1.7 7 5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
           />
         </svg>
       }
