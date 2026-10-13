@@ -42,6 +42,8 @@ export interface HeroText {
   /** Affiché à la place du bouton tant que l'add-on Firefox n'est pas public. */
   readonly firefoxPending: string;
   readonly note: string;
+  /** Remplace `note` pour un visiteur sous Firefox tant que l'add-on attend la validation de Mozilla. */
+  readonly noteFirefoxPending: string;
 }
 
 export interface DemoText {

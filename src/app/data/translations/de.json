@@ -23,7 +23,8 @@
     "chrome": "Zu Chrome hinzufügen",
     "firefox": "Zu Firefox hinzufügen",
     "firefoxPending": "Bald für Firefox",
-    "note": "Kostenlos und Open Source. Funktioniert auch in Edge, Brave und anderen Chromium-Browsern."
+    "note": "Kostenlos und Open Source. Funktioniert auch in Edge, Brave und anderen Chromium-Browsern.",
+    "noteFirefoxPending": "Kostenlos und Open Source. Die Firefox-Version wird gerade von Mozilla geprüft und erscheint hier, sobald sie freigegeben ist."
   },
   "demo": {
     "label": "Demo: eine Folge wird zu Beginn des Abspanns synchronisiert",

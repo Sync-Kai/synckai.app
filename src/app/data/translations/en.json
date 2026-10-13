@@ -23,7 +23,8 @@
     "chrome": "Add to Chrome",
     "firefox": "Add to Firefox",
     "firefoxPending": "Coming soon to Firefox",
-    "note": "Free and open source. Also works in Edge, Brave and other Chromium browsers."
+    "note": "Free and open source. Also works in Edge, Brave and other Chromium browsers.",
+    "noteFirefoxPending": "Free and open source. The Firefox version is being reviewed by Mozilla and will be available here once approved."
   },
   "demo": {
     "label": "Demo of an episode being synced at the ending credits",

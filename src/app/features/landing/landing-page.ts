@@ -14,7 +14,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { SITE_CONFIG } from '@core/tokens';
 import { LanguageCode } from '@domain/language';
 import { screenshotPath } from '@domain/screenshot';
-import { StoreId, preferredStore, storeLinks } from '@domain/store';
+import { StoreId, preferredStore, storeLinks, visitorStorePending } from '@domain/store';
 import { Footer } from '@layout/footer/footer';
 import { Header } from '@layout/header/header';
 import { ClosingCta } from './sections/closing-cta/closing-cta';
@@ -44,6 +44,7 @@ import { Privacy } from './sections/privacy/privacy';
     <main id="main">
       <sk-hero
         [hero]="t.hero"
+        [note]="heroNote()"
         [demo]="t.demo"
         [stores]="stores()"
         [storeLabels]="storeLabels()"
@@ -107,13 +108,19 @@ export class LandingPage {
     }));
   });
 
-  // Chrome par défaut au prérendu ; le navigateur réel n'est connu qu'une fois la page chargée.
-  protected readonly preferred = signal<StoreId>('chrome');
+  // Navigateur du visiteur : inconnu au prérendu (chaîne vide), connu une fois la page chargée.
+  private readonly userAgent = signal('');
+
+  protected readonly preferred = computed(() => preferredStore(this.userAgent(), this.stores()));
+  protected readonly heroNote = computed(() => {
+    const hero = this.translation().hero;
+    return visitorStorePending(this.userAgent(), this.stores())
+      ? hero.noteFirefoxPending
+      : hero.note;
+  });
 
   constructor() {
     effect(() => this.seo.applyLanding(this.translation()));
-    afterNextRender(() =>
-      this.preferred.set(preferredStore(this.browser.userAgent, this.stores())),
-    );
+    afterNextRender(() => this.userAgent.set(this.browser.userAgent));
   }
 }

@@ -1,7 +1,7 @@
 import { pickLanguage } from './language';
 import { formatPlaybackTime, interpolate } from './playback';
 import { screenshotPath } from './screenshot';
-import { preferredStore, storeLinks } from './store';
+import { StoreLink, preferredStore, storeLinks, visitorStore, visitorStorePending } from './store';
 
 describe('pickLanguage', () => {
   const available = ['en', 'fr', 'de'];
@@ -74,6 +74,31 @@ describe('preferredStore', () => {
 
   it('ne met jamais en avant un store indisponible', () => {
     expect(preferredStore(firefoxUa, chromeOnly)).toBe('chrome');
+  });
+});
+
+describe('visitorStorePending', () => {
+  const firefoxUa = 'Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0';
+  const chromeUa = 'Mozilla/5.0 Chrome/141.0 Safari/537.36';
+  const links = (firefoxPublished: boolean): readonly StoreLink[] =>
+    storeLinks(
+      { chromeExtensionId: 'abc', firefoxAddonSlug: 'synckai', firefoxPublished },
+      { chrome: 'en', amo: 'en-US' },
+    );
+
+  it('reconnaît le store du navigateur du visiteur', () => {
+    expect(visitorStore(firefoxUa)).toBe('firefox');
+    expect(visitorStore(chromeUa)).toBe('chrome');
+  });
+
+  it('signale un visiteur Firefox tant que l’add-on n’est pas publié', () => {
+    expect(visitorStorePending(firefoxUa, links(false))).toBe(true);
+    expect(visitorStorePending(firefoxUa, links(true))).toBe(false);
+  });
+
+  it('ne signale rien pour les autres navigateurs, ni pendant le prérendu', () => {
+    expect(visitorStorePending(chromeUa, links(false))).toBe(false);
+    expect(visitorStorePending('', links(false))).toBe(false);
   });
 });
 

@@ -22,13 +22,15 @@ import { DemoPlayer } from '../demo-player/demo-player';
         [labels]="storeLabels()"
         [preferred]="preferred()"
       />
-      <p class="mt-4 text-sm text-mist">{{ hero().note }}</p>
+      <p class="mt-4 text-sm text-mist">{{ note() }}</p>
     </div>
     <sk-demo-player [text]="demo()" />
   `,
 })
 export class Hero {
   readonly hero = input.required<HeroText>();
+  /** Phrase sous les boutons, choisie par la page selon le navigateur du visiteur. */
+  readonly note = input.required<string>();
   readonly demo = input.required<DemoText>();
   readonly stores = input.required<readonly StoreLink[]>();
   readonly storeLabels = input.required<Readonly<Record<StoreId, string>>>();

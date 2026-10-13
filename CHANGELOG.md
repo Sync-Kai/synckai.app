@@ -5,6 +5,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+### Added
+
+- Firefox visitors are told, under the install buttons, that the Firefox version is being reviewed by Mozilla, instead of the note about Chromium browsers. Other browsers are unchanged, and the note goes away by itself once `firefoxPublished` is `true`.
+
 ## [1.2.1] - 2026-10-13
 
 ### Changed
