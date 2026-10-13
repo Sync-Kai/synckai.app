@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   afterNextRender,
   computed,
   effect,
@@ -12,6 +13,7 @@ import { LanguageService } from '@core/i18n/language.service';
 import { BrowserEnvironment } from '@core/platform/browser-environment';
 import { SeoService } from '@core/seo/seo.service';
 import { SITE_CONFIG } from '@core/tokens';
+import { MobileNotice, ShareOutcome, isMobileDevice } from '@domain/device';
 import { LanguageCode } from '@domain/language';
 import { screenshotPath } from '@domain/screenshot';
 import {
@@ -55,6 +57,8 @@ import { Privacy } from './sections/privacy/privacy';
         [stores]="shownStores()"
         [storeLabels]="storeLabels()"
         [preferred]="preferred()"
+        [mobileNotice]="mobileNotice()"
+        (share)="shareLink()"
       />
       <sk-platforms [text]="t.platforms" />
       <sk-how-it-works [title]="t.how.title" [steps]="t.how.steps" />
@@ -72,6 +76,8 @@ import { Privacy } from './sections/privacy/privacy';
         [stores]="shownStores()"
         [storeLabels]="storeLabels()"
         [preferred]="preferred()"
+        [mobileNotice]="mobileNotice()"
+        (share)="shareLink()"
       />
     </main>
     <sk-footer
@@ -89,6 +95,7 @@ export class LandingPage {
   protected readonly site = inject(SITE_CONFIG);
   private readonly seo = inject(SeoService);
   private readonly browser = inject(BrowserEnvironment);
+  private readonly destroyRef = inject(DestroyRef);
 
   /** Code de langue issu de l'URL (liaison des paramètres de route). */
   readonly lang = input.required<LanguageCode>();
@@ -127,8 +134,39 @@ export class LandingPage {
       : hero.note;
   });
 
+  // Sur mobile, l'extension ne s'installe pas : un message propose de s'envoyer le lien à la place des boutons.
+  private readonly maxTouchPoints = signal(0);
+  private readonly shareState = signal<ShareOutcome | null>(null);
+  private shareReset: ReturnType<typeof setTimeout> | undefined;
+  protected readonly mobileNotice = computed((): MobileNotice | null => {
+    if (!isMobileDevice(this.userAgent(), this.maxTouchPoints())) {
+      return null;
+    }
+    const t = this.translation();
+    return { text: t.mobile, url: `${this.site.url}/${t.code}`, state: this.shareState() };
+  });
+
   constructor() {
     effect(() => this.seo.applyLanding(this.translation()));
-    afterNextRender(() => this.userAgent.set(this.browser.userAgent));
+    afterNextRender(() => {
+      this.userAgent.set(this.browser.userAgent);
+      this.maxTouchPoints.set(this.browser.maxTouchPoints);
+    });
+    this.destroyRef.onDestroy(() => clearTimeout(this.shareReset));
+  }
+
+  protected shareLink(): void {
+    const url = this.mobileNotice()?.url;
+    if (!url) {
+      return;
+    }
+    void this.browser.shareLink(url).then((outcome) => {
+      clearTimeout(this.shareReset);
+      this.shareState.set(outcome === 'cancelled' ? null : outcome);
+      // « Lien copié » revient à « Envoyer le lien » après quelques secondes.
+      if (outcome === 'copied') {
+        this.shareReset = setTimeout(() => this.shareState.set(null), 3000);
+      }
+    });
   }
 }

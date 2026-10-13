@@ -1,4 +1,5 @@
 import { DOCUMENT, Injectable, inject } from '@angular/core';
+import { ShareOutcome } from '@domain/device';
 
 const LANGUAGE_KEY = 'synckai-lang';
 
@@ -24,6 +25,38 @@ export class BrowserEnvironment {
 
   get prefersReducedMotion(): boolean {
     return this.window?.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  }
+
+  /** Points de contact de l'écran : 0 sans écran tactile, et pendant le prérendu. */
+  get maxTouchPoints(): number {
+    return this.window?.navigator?.maxTouchPoints ?? 0;
+  }
+
+  /**
+   * Partage un lien avec le menu du système (mobile), sinon le copie dans le presse-papiers.
+   * Un partage refusé pour une autre raison qu'une annulation retombe sur la copie.
+   */
+  async shareLink(url: string): Promise<ShareOutcome> {
+    const nav = this.window?.navigator;
+    if (!nav) {
+      return 'unavailable';
+    }
+    if (typeof nav.share === 'function') {
+      try {
+        await nav.share({ url });
+        return 'shared';
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return 'cancelled';
+        }
+      }
+    }
+    try {
+      await nav.clipboard.writeText(url);
+      return 'copied';
+    } catch {
+      return 'unavailable';
+    }
   }
 
   /** Langue choisie à la main lors d'une visite précédente, si le stockage du navigateur le permet. */

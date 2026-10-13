@@ -17,7 +17,19 @@ export interface Translation {
   readonly privacy: PrivacyText;
   readonly faq: { readonly title: string; readonly items: readonly FaqItem[] };
   readonly cta: { readonly title: string; readonly text: string };
+  readonly mobile: MobileText;
   readonly footer: FooterText;
+}
+
+/** Message pour les visiteurs sur mobile, où l'extension ne s'installe pas. */
+export interface MobileText {
+  readonly text: string;
+  /** Bouton qui ouvre le menu de partage (ou copie le lien). */
+  readonly share: string;
+  /** Bouton une fois le lien copié. */
+  readonly copied: string;
+  /** Invite à copier le lien à la main quand ni le partage ni la copie ne sont possibles. */
+  readonly manual: string;
 }
 
 export interface StoreLocales {

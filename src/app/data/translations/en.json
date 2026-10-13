@@ -136,6 +136,12 @@
     "title": "Your next episode is already synced.",
     "text": "Install SyncKai, connect your list, and press play."
   },
+  "mobile": {
+    "text": "SyncKai works on computers, in Chrome, Firefox, Edge or Brave. Send yourself the link to install it later.",
+    "share": "Send the link",
+    "copied": "Link copied",
+    "manual": "Copy this link:"
+  },
   "footer": {
     "source": "Source code",
     "creator": "The creator on AniList",

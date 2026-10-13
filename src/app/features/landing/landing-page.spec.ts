@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { BrowserEnvironment } from '@core/platform/browser-environment';
+import { ShareOutcome } from '@domain/device';
 import { provideSiteData } from '@core/provide-site-data';
 import fr from '@data/translations/fr.json';
 import { LandingPage } from './landing-page';
@@ -32,7 +33,12 @@ describe('LandingPage', () => {
     }
   });
 
-  async function renderAs(userAgent: string): Promise<HTMLElement> {
+  interface Visitor {
+    readonly maxTouchPoints?: number;
+    readonly share?: (url: string) => Promise<ShareOutcome>;
+  }
+
+  async function renderAs(userAgent: string, visitor: Visitor = {}): Promise<HTMLElement> {
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
@@ -41,6 +47,8 @@ describe('LandingPage', () => {
           provide: BrowserEnvironment,
           useValue: {
             userAgent,
+            maxTouchPoints: visitor.maxTouchPoints ?? 0,
+            shareLink: visitor.share ?? ((): Promise<ShareOutcome> => Promise.resolve('copied')),
             languages: [],
             prefersReducedMotion: true,
             readSavedLanguage: () => null,
@@ -94,5 +102,53 @@ describe('LandingPage', () => {
     const hero = page.querySelector('sk-hero')!;
     expect(hero.querySelector('a[href*="chromewebstore"]')).not.toBeNull();
     expect(hero.textContent).toContain(fr.hero.firefoxPending);
+  });
+
+  const iphone =
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
+
+  it('remplace les boutons d’installation par le message mobile', async () => {
+    const page = await renderAs(iphone, { maxTouchPoints: 5 });
+    expect(page.querySelectorAll('sk-store-buttons')).toHaveLength(0);
+    expect(page.querySelectorAll('sk-desktop-only-notice')).toHaveLength(2);
+    expect(page.querySelector('sk-hero')?.textContent).toContain(fr.mobile.text);
+    expect(page.querySelector('sk-hero')?.textContent).not.toContain(fr.hero.note);
+  });
+
+  it('partage le lien de la page dans la langue du visiteur, puis confirme la copie', async () => {
+    const shared: string[] = [];
+    const page = await renderAs(iphone, {
+      maxTouchPoints: 5,
+      share: (url) => {
+        shared.push(url);
+        return Promise.resolve('copied');
+      },
+    });
+    const button = page.querySelector<HTMLButtonElement>('sk-hero sk-desktop-only-notice button')!;
+    button.click();
+    await new Promise((resolve) => setTimeout(resolve));
+    TestBed.tick();
+    expect(shared).toEqual(['https://synckai.app/fr']);
+    expect(button.textContent).toContain(fr.mobile.copied);
+  });
+
+  it('montre le lien à copier quand le navigateur ne sait ni partager ni copier', async () => {
+    const page = await renderAs(iphone, {
+      maxTouchPoints: 5,
+      share: () => Promise.resolve('unavailable'),
+    });
+    page.querySelector<HTMLButtonElement>('sk-hero sk-desktop-only-notice button')!.click();
+    await new Promise((resolve) => setTimeout(resolve));
+    TestBed.tick();
+    expect(page.querySelector('sk-hero')?.textContent).toContain('https://synckai.app/fr');
+  });
+
+  it('garde les boutons sur un ordinateur', async () => {
+    const page = await renderAs(
+      'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36',
+      { maxTouchPoints: 10 },
+    );
+    expect(page.querySelectorAll('sk-desktop-only-notice')).toHaveLength(0);
+    expect(page.querySelectorAll('sk-store-buttons')).toHaveLength(2);
   });
 });

@@ -136,6 +136,12 @@
     "title": "Deine nächste Folge ist schon synchronisiert.",
     "text": "Installiere SyncKai, verbinde deine Liste und drück auf Play."
   },
+  "mobile": {
+    "text": "SyncKai läuft auf dem Computer, in Chrome, Firefox, Edge oder Brave. Schick dir den Link, um es später zu installieren.",
+    "share": "Link senden",
+    "copied": "Link kopiert",
+    "manual": "Kopier diesen Link:"
+  },
   "footer": {
     "source": "Quellcode",
     "creator": "Der Entwickler auf AniList",

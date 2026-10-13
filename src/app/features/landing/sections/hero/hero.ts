@@ -1,12 +1,14 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { MobileNotice } from '@domain/device';
 import { StoreId, StoreLink } from '@domain/store';
 import { DemoText, HeroText } from '@domain/translation';
+import { DesktopOnlyNotice } from '@shared/ui/desktop-only-notice/desktop-only-notice';
 import { StoreButtons } from '@shared/ui/store-buttons/store-buttons';
 import { DemoPlayer } from '../demo-player/demo-player';
 
 @Component({
   selector: 'sk-hero',
-  imports: [StoreButtons, DemoPlayer],
+  imports: [StoreButtons, DesktopOnlyNotice, DemoPlayer],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class:
@@ -16,13 +18,17 @@ import { DemoPlayer } from '../demo-player/demo-player';
     <div>
       <h1 class="text-[clamp(38px,5vw,58px)]">{{ hero().title }}</h1>
       <p class="mt-[22px] max-w-[34em] text-[19px] text-mist">{{ hero().lead }}</p>
-      <sk-store-buttons
-        class="mt-8"
-        [links]="stores()"
-        [labels]="storeLabels()"
-        [preferred]="preferred()"
-      />
-      <p class="mt-4 text-sm text-mist">{{ note() }}</p>
+      @if (mobileNotice(); as notice) {
+        <sk-desktop-only-notice class="mt-8" [notice]="notice" (share)="share.emit()" />
+      } @else {
+        <sk-store-buttons
+          class="mt-8"
+          [links]="stores()"
+          [labels]="storeLabels()"
+          [preferred]="preferred()"
+        />
+        <p class="mt-4 text-sm text-mist">{{ note() }}</p>
+      }
     </div>
     <sk-demo-player [text]="demo()" />
   `,
@@ -35,4 +41,7 @@ export class Hero {
   readonly stores = input.required<readonly StoreLink[]>();
   readonly storeLabels = input.required<Readonly<Record<StoreId, string>>>();
   readonly preferred = input.required<StoreId>();
+  /** Sur mobile, remplace les boutons d'installation et la phrase qui les suit. */
+  readonly mobileNotice = input<MobileNotice | null>(null);
+  readonly share = output();
 }

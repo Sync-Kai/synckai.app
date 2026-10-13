@@ -1,3 +1,4 @@
+import { isMobileDevice } from './device';
 import { pickLanguage } from './language';
 import { formatPlaybackTime, interpolate } from './playback';
 import { screenshotPath } from './screenshot';
@@ -184,5 +185,50 @@ describe('playback', () => {
     expect(interpolate(0.8, 0.9, 0.5)).toBeCloseTo(0.85);
     expect(interpolate(0.8, 0.9, -1)).toBe(0.8);
     expect(interpolate(0.8, 0.9, 2)).toBe(0.9);
+  });
+});
+
+describe('isMobileDevice', () => {
+  it('reconnaît les téléphones et tablettes Android et iOS', () => {
+    expect(
+      isMobileDevice(
+        'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Mobile Safari/537.36',
+        5,
+      ),
+    ).toBe(true);
+    expect(
+      isMobileDevice('Mozilla/5.0 (Android 14; Mobile; rv:142.0) Gecko/142.0 Firefox/142.0', 5),
+    ).toBe(true);
+    expect(
+      isMobileDevice(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1',
+        5,
+      ),
+    ).toBe(true);
+  });
+
+  it('reconnaît un iPad, qui se présente comme un Mac mais a un écran tactile', () => {
+    const ua =
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15';
+    expect(isMobileDevice(ua, 5)).toBe(true);
+    expect(isMobileDevice(ua, 0)).toBe(false);
+  });
+
+  it('laisse les ordinateurs, les robots et le prérendu de côté', () => {
+    expect(
+      isMobileDevice(
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+        0,
+      ),
+    ).toBe(false);
+    // Un PC portable tactile reste un ordinateur.
+    expect(
+      isMobileDevice(
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:142.0) Gecko/20100101 Firefox/142.0',
+        10,
+      ),
+    ).toBe(false);
+    expect(isMobileDevice('Googlebot/2.1 (+http://www.google.com/bot.html)', 0)).toBe(false);
+    expect(isMobileDevice('', 0)).toBe(false);
   });
 });
