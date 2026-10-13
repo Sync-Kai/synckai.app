@@ -19,7 +19,10 @@ const shortLinks: readonly ShortLink[] = [
   },
   {
     path: '/firefox',
-    url: `https://addons.mozilla.org/firefox/addon/${site.stores.firefoxAddonSlug}/`,
+    // Tant que l'add-on n'est pas public, sa page est une 404 : on renvoie vers l'accueil.
+    url: site.stores.firefoxPublished
+      ? `https://addons.mozilla.org/firefox/addon/${site.stores.firefoxAddonSlug}/`
+      : `${site.url}/`,
   },
   { path: '/github', url: site.repository },
   { path: '/privacy', url: site.privacyPolicy },

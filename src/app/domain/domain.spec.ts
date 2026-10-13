@@ -25,27 +25,55 @@ describe('pickLanguage', () => {
 });
 
 describe('storeLinks', () => {
-  const listings = { chromeExtensionId: 'abc', firefoxAddonSlug: 'synckai' };
+  const listings = {
+    chromeExtensionId: 'abc',
+    firefoxAddonSlug: 'synckai',
+    firefoxPublished: true,
+  };
 
   it('construit les URL des stores dans la langue demandée', () => {
     expect(storeLinks(listings, { chrome: 'fr', amo: 'fr' })).toEqual([
-      { id: 'chrome', url: 'https://chromewebstore.google.com/detail/abc?hl=fr' },
-      { id: 'firefox', url: 'https://addons.mozilla.org/fr/firefox/addon/synckai/' },
+      { id: 'chrome', url: 'https://chromewebstore.google.com/detail/abc?hl=fr', available: true },
+      {
+        id: 'firefox',
+        url: 'https://addons.mozilla.org/fr/firefox/addon/synckai/',
+        available: true,
+      },
+    ]);
+  });
+
+  it('marque Firefox indisponible tant que l’add-on n’est pas publié', () => {
+    const links = storeLinks(
+      { ...listings, firefoxPublished: false },
+      { chrome: 'en', amo: 'en-US' },
+    );
+    expect(links.map((l) => [l.id, l.available])).toEqual([
+      ['chrome', true],
+      ['firefox', false],
     ]);
   });
 });
 
 describe('preferredStore', () => {
+  const firefoxUa = 'Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0';
+  const both = storeLinks(
+    { chromeExtensionId: 'abc', firefoxAddonSlug: 'synckai', firefoxPublished: true },
+    { chrome: 'en', amo: 'en-US' },
+  );
+  const chromeOnly = both.map((l) => (l.id === 'firefox' ? { ...l, available: false } : l));
+
   it('choisit Firefox Add-ons sur Firefox, de bureau ou iOS', () => {
-    expect(
-      preferredStore('Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0'),
-    ).toBe('firefox');
-    expect(preferredStore('Mozilla/5.0 (iPhone) FxiOS/142.0 Mobile/15E148')).toBe('firefox');
+    expect(preferredStore(firefoxUa, both)).toBe('firefox');
+    expect(preferredStore('Mozilla/5.0 (iPhone) FxiOS/142.0 Mobile/15E148', both)).toBe('firefox');
   });
 
   it('choisit le Chrome Web Store ailleurs, et pendant le prérendu', () => {
-    expect(preferredStore('Mozilla/5.0 Chrome/141.0 Safari/537.36 Edg/141.0')).toBe('chrome');
-    expect(preferredStore('')).toBe('chrome');
+    expect(preferredStore('Mozilla/5.0 Chrome/141.0 Safari/537.36 Edg/141.0', both)).toBe('chrome');
+    expect(preferredStore('', both)).toBe('chrome');
+  });
+
+  it('ne met jamais en avant un store indisponible', () => {
+    expect(preferredStore(firefoxUa, chromeOnly)).toBe('chrome');
   });
 });
 

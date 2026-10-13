@@ -22,6 +22,7 @@
     "lead": "Watch on Crunchyroll or ADN as usual. When the ending credits start, SyncKai saves the episode to AniList and MyAnimeList. You never type an episode number again.",
     "chrome": "Add to Chrome",
     "firefox": "Add to Firefox",
+    "firefoxPending": "Coming soon to Firefox",
     "note": "Free and open source. Also works in Edge, Brave and other Chromium browsers."
   },
   "demo": {

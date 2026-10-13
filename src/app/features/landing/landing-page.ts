@@ -90,10 +90,14 @@ export class LandingPage {
   protected readonly stores = computed(() =>
     storeLinks(this.site.stores, this.translation().stores),
   );
-  protected readonly storeLabels = computed((): Record<StoreId, string> => ({
-    chrome: this.translation().hero.chrome,
-    firefox: this.translation().hero.firefox,
-  }));
+  protected readonly storeLabels = computed((): Record<StoreId, string> => {
+    const hero = this.translation().hero;
+    const firefox = this.stores().find((link) => link.id === 'firefox');
+    return {
+      chrome: hero.chrome,
+      firefox: firefox?.available ? hero.firefox : hero.firefoxPending,
+    };
+  });
   protected readonly showcase = computed((): ShowcaseItem[] => {
     const t = this.translation();
     return t.features.items.map((item) => ({
@@ -108,6 +112,8 @@ export class LandingPage {
 
   constructor() {
     effect(() => this.seo.applyLanding(this.translation()));
-    afterNextRender(() => this.preferred.set(preferredStore(this.browser.userAgent)));
+    afterNextRender(() =>
+      this.preferred.set(preferredStore(this.browser.userAgent, this.stores())),
+    );
   }
 }

@@ -9,7 +9,8 @@
   "year": 2026,
   "stores": {
     "chromeExtensionId": "khokcmigioggannjoojambdgioigdceb",
-    "firefoxAddonSlug": "synckai"
+    "firefoxAddonSlug": "synckai",
+    "firefoxPublished": false
   },
   "screenshots": {
     "languages": ["en", "fr", "de"],

@@ -39,6 +39,8 @@ export interface HeroText {
   readonly lead: string;
   readonly chrome: string;
   readonly firefox: string;
+  /** Affiché à la place du bouton tant que l'add-on Firefox n'est pas public. */
+  readonly firefoxPending: string;
   readonly note: string;
 }
 

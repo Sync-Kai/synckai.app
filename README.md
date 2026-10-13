@@ -59,6 +59,10 @@ Conventions: one container per page reads the route and services, sections only 
 3. Optional: add the store screenshots as `.webp` in `public/assets/shots/<code>/` and add the code to `screenshots.languages` in `site.config.json`. Otherwise the English ones are used.
 4. Run `npm run verify`. The build fails if a text is missing, and the tests fail if a key is missing, extra or empty. The new language gets its prerendered page, its menu entry, its sitemap entry and automatic detection.
 
+## Firefox availability
+
+While the Firefox add-on awaits Mozilla's review, `stores.firefoxPublished` is `false` in `src/app/data/site.config.json`: the Firefox button shows "Coming soon to Firefox" without a link, and `/firefox` leads to the home page. Once the listing is public, set it to `true` and deploy.
+
 ## Short links
 
 | Link | Goes to |
