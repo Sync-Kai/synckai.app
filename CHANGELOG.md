@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-13
+
 ### Changed
 
 - Hosting moved from GitHub Pages to Cloudflare Pages: the repository can stay private. The build now runs `npm run verify` before publishing, and branches get preview URLs.
