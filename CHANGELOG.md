@@ -17,6 +17,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 - `firefoxPublished` setting in `site.config.json`: while the Firefox add-on awaits Mozilla's review, the Firefox button becomes a non-clickable "Coming soon to Firefox" label, `/firefox` leads to the home page, and Chrome stays highlighted even on Firefox.
 - Security headers (`nosniff`, referrer policy, permissions policy, no framing) and long-term caching of hashed files.
 
+### Fixed
+
+- Header links now follow the order of the page (How it works before Features), so they no longer jump down then back up.
+
 ### Removed
 
 - GitHub Pages deploy workflow and `CNAME` file.

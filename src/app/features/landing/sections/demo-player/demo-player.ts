@@ -63,6 +63,12 @@ export class DemoPlayer {
 
   constructor() {
     afterNextRender(() => {
+      this.destroyRef.onDestroy(() => this.stop());
+      // Sans IntersectionObserver (très vieux navigateurs, tests) : la démo démarre tout de suite.
+      if (typeof IntersectionObserver === 'undefined') {
+        this.play();
+        return;
+      }
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries.some((e) => e.isIntersecting)) {
@@ -73,10 +79,7 @@ export class DemoPlayer {
         { threshold: 0.4 },
       );
       observer.observe(this.host.nativeElement);
-      this.destroyRef.onDestroy(() => {
-        observer.disconnect();
-        this.stop();
-      });
+      this.destroyRef.onDestroy(() => observer.disconnect());
     });
   }
 

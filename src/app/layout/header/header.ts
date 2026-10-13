@@ -79,11 +79,12 @@ export class Header {
     ],
   );
 
+  // Même ordre que les sections de la page (vérifié par landing-page.spec.ts).
   protected readonly links = computed(() => {
     const nav = this.nav();
     return [
-      { fragment: 'features', label: nav.features },
       { fragment: 'how', label: nav.how },
+      { fragment: 'features', label: nav.features },
       { fragment: 'privacy', label: nav.privacy },
       { fragment: 'faq', label: nav.faq },
     ];
