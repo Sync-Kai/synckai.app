@@ -8,7 +8,7 @@
 
 ## Project Context
 
-Marketing website of the SyncKai browser extension (https://github.com/Sync-Kai/SyncKai), published at https://synckai.app on GitHub Pages. Audience: anime fans discovering the extension. The site is static: no server, no analytics, no third-party requests (the font is self-hosted), consistent with the extension's privacy promise.
+Marketing website of the SyncKai browser extension (https://github.com/Sync-Kai/SyncKai), published at https://synckai.app on Cloudflare Pages. Audience: anime fans discovering the extension. The site is static: no server, no analytics, no third-party requests (the font is self-hosted), consistent with the extension's privacy promise.
 
 ## Tech Stack
 
@@ -42,7 +42,7 @@ Marketing website of the SyncKai browser extension (https://github.com/Sync-Kai/
 
 ## Git Workflow (Gitflow)
 
-- Branches: `main` (production, deployed to GitHub Pages on push), `develop` (integration), `feature/*`, `bugfix/*`, `hotfix/*`, `chore/*`, `release/*`.
+- Branches: `main` (production, deployed by Cloudflare Pages on push), `develop` (integration), `feature/*`, `bugfix/*`, `hotfix/*`, `chore/*`, `release/*`.
 - Strictly linear history: rebase the branch on `develop`, then `git merge --ff-only`; delete the branch after the merge.
 - The assistant creates the branch itself, then proposes the commands: commit, merge, push, tag and release only on an explicit go (« Go », « Vas-y », « OK »).
 - Commit messages in English, Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`).
@@ -60,7 +60,8 @@ Marketing website of the SyncKai browser extension (https://github.com/Sync-Kai/
 Update this section whenever a lasting decision is made. `git log` and `CHANGELOG.md` are authoritative on the state of the code.
 
 - 2026-10-13: first static version (1.0.0) on `main`, then rebuilt with Angular 22 on `feature/angular-site` at the owner's request (Angular is the owner's framework of choice, for future evolution).
-- Domain `synckai.app`: DNS and GitHub Pages custom domain to be set up by the owner (A records to GitHub Pages, `www` CNAME to `sync-kai.github.io`, Enforce HTTPS).
+- Domain `synckai.app` registered at Cloudflare Registrar (2026-10-13), auto-renew to keep on. Live on Cloudflare Pages (project `synckai-app`, `synckai-app.pages.dev`) since 2026-10-13. `www.synckai.app` is a proxied placeholder record redirected by the Single Redirect rule « www to root » (`https://www.synckai.app/*` → `https://synckai.app/${1}`, 301, query string kept); do not add `www` as a Pages custom domain.
+- Hosting moved from GitHub Pages to Cloudflare Pages (2026-10-13) so the repository can be private on GitHub's free plan. Git integration: production branch `main`, build command `npm run verify`, output `dist/synckai-app/browser`, Node from `.node-version` (exact version: Cloudflare resolves a bare `24` to an older 24.x that Angular rejects). Short links are `_redirects` (302), headers in `public/_headers`; there is no deploy workflow on GitHub anymore (only `ci.yml`).
 - Store links: Chrome Web Store item `khokcmigioggannjoojambdgioigdceb`, Firefox Add-ons slug `synckai` (`site.config.json`).
 - Screenshots in `public/assets/shots/<lang>/` are WebP conversions of the extension's `docs/store/screenshots/` (1280×800). Regenerate them from the extension after its screenshots change.
 - Initial bundle is about 80 kB compressed (Angular runtime); the content is readable before it loads thanks to prerendering.

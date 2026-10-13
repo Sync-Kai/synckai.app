@@ -5,6 +5,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+### Changed
+
+- Hosting moved from GitHub Pages to Cloudflare Pages: the repository can stay private. The build now runs `npm run verify` before publishing, and branches get preview URLs.
+- Short links (`/chrome`, `/firefox`, `/github`, `/privacy`) are now server redirects instead of HTML pages.
+
+### Added
+
+- Security headers (`nosniff`, referrer policy, permissions policy, no framing) and long-term caching of hashed files.
+
+### Removed
+
+- GitHub Pages deploy workflow and `CNAME` file.
+
 ## [1.1.0] - 2026-10-13
 
 ### Changed
