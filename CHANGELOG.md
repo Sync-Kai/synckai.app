@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-10-13
+
 ### Changed
 
 - The GitHub and AniList links are back in the footer only: the header keeps to the page navigation and the language menu.
