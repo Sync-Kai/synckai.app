@@ -19,6 +19,7 @@ import { localizeReleases } from '@domain/release';
 import { screenshotPath } from '@domain/screenshot';
 import {
   StoreId,
+  browserFamily,
   preferredStore,
   storeLinks,
   visibleStores,
@@ -149,9 +150,10 @@ export class LandingPage {
   protected readonly preferred = computed(() => preferredStore(this.userAgent(), this.stores()));
   protected readonly heroNote = computed(() => {
     const hero = this.translation().hero;
-    return visitorStorePending(this.userAgent(), this.stores())
-      ? hero.noteFirefoxPending
-      : hero.note;
+    if (visitorStorePending(this.userAgent(), this.stores())) {
+      return hero.noteFirefoxPending;
+    }
+    return browserFamily(this.userAgent()) === 'firefox' ? hero.noteFirefox : hero.note;
   });
 
   // Sur mobile, l'extension ne s'installe pas : un message propose de s'envoyer le lien à la place des boutons.

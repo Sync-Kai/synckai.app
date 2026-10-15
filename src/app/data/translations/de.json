@@ -24,6 +24,7 @@
     "firefox": "Zu Firefox hinzufügen",
     "firefoxPending": "Bald für Firefox",
     "note": "Kostenlos und Open Source. Funktioniert auch in Edge, Brave und anderen Chromium-Browsern.",
+    "noteFirefox": "Kostenlos und Open Source. Funktioniert mit Firefox 142 oder neuer.",
     "noteFirefoxPending": "Kostenlos und Open Source. Die Firefox-Version wird gerade von Mozilla geprüft und erscheint hier, sobald sie freigegeben ist."
   },
   "demo": {

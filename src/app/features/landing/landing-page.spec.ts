@@ -3,6 +3,8 @@ import { provideRouter } from '@angular/router';
 import { BrowserEnvironment } from '@core/platform/browser-environment';
 import { ShareOutcome } from '@domain/device';
 import { provideSiteData } from '@core/provide-site-data';
+import { SITE_CONFIG } from '@core/tokens';
+import { SITE_CONFIG_DATA } from '@data/site.config';
 import releases from '@data/releases.json';
 import fr from '@data/translations/fr.json';
 import { LandingPage } from './landing-page';
@@ -37,6 +39,8 @@ describe('LandingPage', () => {
   interface Visitor {
     readonly maxTouchPoints?: number;
     readonly share?: (url: string) => Promise<ShareOutcome>;
+    /** Remplace `stores.firefoxPublished` de site.config.json, pour tester les deux états. */
+    readonly firefoxPublished?: boolean;
   }
 
   it('annonce la dernière version de l’extension, avec un lien vers les nouveautés', () => {
@@ -62,6 +66,17 @@ describe('LandingPage', () => {
         provideRouter([]),
         provideSiteData(),
         {
+          provide: SITE_CONFIG,
+          useValue: {
+            ...SITE_CONFIG_DATA,
+            stores: {
+              ...SITE_CONFIG_DATA.stores,
+              firefoxPublished:
+                visitor.firefoxPublished ?? SITE_CONFIG_DATA.stores.firefoxPublished,
+            },
+          },
+        },
+        {
           provide: BrowserEnvironment,
           useValue: {
             userAgent,
@@ -83,11 +98,26 @@ describe('LandingPage', () => {
     return fixture.nativeElement as HTMLElement;
   }
 
-  it('prévient un visiteur Firefox que sa version est en validation', async () => {
-    const page = await renderAs(
-      'Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0',
-    );
-    expect(page.querySelector('sk-hero')?.textContent).toContain(fr.hero.noteFirefoxPending);
+  const firefox = 'Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0';
+
+  it('prévient un visiteur Firefox tant que sa version est en validation', async () => {
+    const page = await renderAs(firefox, { firefoxPublished: false });
+    const hero = page.querySelector('sk-hero')!;
+    expect(hero.textContent).toContain(fr.hero.noteFirefoxPending);
+    expect(hero.textContent).toContain(fr.hero.firefoxPending);
+    expect(hero.querySelector('a[href*="addons.mozilla.org"]')).toBeNull();
+  });
+
+  it('propose l’add-on Firefox, seul, à un visiteur Firefox une fois publié', async () => {
+    const page = await renderAs(firefox, { firefoxPublished: true });
+    const hero = page.querySelector('sk-hero')!;
+    const link = hero.querySelector<HTMLAnchorElement>('a[href*="addons.mozilla.org"]');
+    expect(link?.getAttribute('href')).toBe('https://addons.mozilla.org/fr/firefox/addon/synckai/');
+    expect(link?.textContent).toContain(fr.hero.firefox);
+    expect(link?.classList).toContain('bg-kai');
+    expect(hero.querySelector('a[href*="chromewebstore"]')).toBeNull();
+    expect(hero.textContent).toContain(fr.hero.noteFirefox);
+    expect(hero.textContent).not.toContain(fr.hero.noteFirefoxPending);
   });
 
   it('garde la phrase habituelle pour les autres navigateurs', async () => {
@@ -95,15 +125,7 @@ describe('LandingPage', () => {
     const hero = page.querySelector('sk-hero')?.textContent ?? '';
     expect(hero).toContain(fr.hero.note);
     expect(hero).not.toContain(fr.hero.noteFirefoxPending);
-  });
-
-  it('ne montre que Firefox à un visiteur Firefox', async () => {
-    const page = await renderAs(
-      'Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0',
-    );
-    const hero = page.querySelector('sk-hero')!;
-    expect(hero.querySelector('a[href*="chromewebstore"]')).toBeNull();
-    expect(hero.textContent).toContain(fr.hero.firefoxPending);
+    expect(hero).not.toContain(fr.hero.noteFirefox);
   });
 
   it('ne montre que Chrome à un visiteur Chromium', async () => {
@@ -116,10 +138,12 @@ describe('LandingPage', () => {
   });
 
   it('montre les deux quand le navigateur est inconnu', async () => {
-    const page = await renderAs('Googlebot/2.1 (+http://www.google.com/bot.html)');
+    const page = await renderAs('Googlebot/2.1 (+http://www.google.com/bot.html)', {
+      firefoxPublished: true,
+    });
     const hero = page.querySelector('sk-hero')!;
     expect(hero.querySelector('a[href*="chromewebstore"]')).not.toBeNull();
-    expect(hero.textContent).toContain(fr.hero.firefoxPending);
+    expect(hero.querySelector('a[href*="addons.mozilla.org"]')).not.toBeNull();
   });
 
   const iphone =

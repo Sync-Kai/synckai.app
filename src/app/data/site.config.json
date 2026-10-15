@@ -11,7 +11,7 @@
   "stores": {
     "chromeExtensionId": "khokcmigioggannjoojambdgioigdceb",
     "firefoxAddonSlug": "synckai",
-    "firefoxPublished": false
+    "firefoxPublished": true
   },
   "screenshots": {
     "languages": ["en", "fr", "de"],
