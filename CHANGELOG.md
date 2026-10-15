@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-10-15
+
 ### Changed
 
 - The Firefox add-on is public on Firefox Add-ons: the Firefox button now links to it (and is the only one shown to Firefox visitors), `/firefox` leads to the listing, and the structured data list both stores. Firefox visitors get their own note under the buttons ("Works with Firefox 142 or later") instead of the one about Chromium browsers.
