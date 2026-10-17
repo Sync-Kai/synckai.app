@@ -5,6 +5,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-10-17
+
+### Added
+
+- A "Coming soon" box under the install buttons announces the next version of the extension: a fully redesigned interface translated into 21 languages, Prime Video support, more reliable anime matching using the year and the episode count, and new episode alerts at the time they come out on the viewer's platform.
+
 ## [1.6.0] - 2026-10-15
 
 ### Changed
