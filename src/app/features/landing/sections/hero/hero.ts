@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 import { RouterLink } from '@angular/router';
 import { MobileNotice } from '@domain/device';
 import { StoreId, StoreLink } from '@domain/store';
-import { DemoText, HeroText } from '@domain/translation';
+import { DemoText, HeroText, UpcomingText } from '@domain/translation';
 import { DesktopOnlyNotice } from '@shared/ui/desktop-only-notice/desktop-only-notice';
 import { Icon } from '@shared/ui/icon/icon';
 import { StoreButtons } from '@shared/ui/store-buttons/store-buttons';
@@ -43,6 +43,16 @@ import { DemoPlayer } from '../demo-player/demo-player';
         />
         <p class="mt-4 text-sm text-mist">{{ note() }}</p>
       }
+      @if (upcoming(); as next) {
+        <p
+          class="mt-8 max-w-[34em] rounded-2xl border border-ink-line bg-ink/60 px-4 py-3 text-[15px] text-mist"
+        >
+          <span
+            class="mr-2 inline-block rounded-full bg-kai px-2.5 py-0.5 text-sm font-bold text-white"
+            >{{ next.label }}</span
+          >{{ next.text }}
+        </p>
+      }
     </div>
     <sk-demo-player [text]="demo()" />
   `,
@@ -57,6 +67,8 @@ export class Hero {
   readonly preferred = input.required<StoreId>();
   /** Badge de la dernière version de l'extension, vers la page des nouveautés. */
   readonly whatsNew = input<WhatsNewBadge | null>(null);
+  /** Annonce de la prochaine version, affichée sous les boutons (mobile compris). */
+  readonly upcoming = input<UpcomingText | null>(null);
   /** Sur mobile, remplace les boutons d'installation et la phrase qui les suit. */
   readonly mobileNotice = input<MobileNotice | null>(null);
   readonly share = output();

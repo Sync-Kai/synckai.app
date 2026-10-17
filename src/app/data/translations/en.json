@@ -27,6 +27,10 @@
     "noteFirefox": "Free and open source. Works with Firefox 142 or later.",
     "noteFirefoxPending": "Free and open source. The Firefox version is being reviewed by Mozilla and will be available here once approved."
   },
+  "upcoming": {
+    "label": "Coming soon",
+    "text": "The next version of SyncKai brings a fully redesigned interface translated into 21 languages, Prime Video support, much more reliable anime matching using the year and the episode count, and new episode alerts at the time it comes out on your platform."
+  },
   "demo": {
     "label": "Demo of an episode being synced at the ending credits",
     "series": "Kumo no Yūbinya",

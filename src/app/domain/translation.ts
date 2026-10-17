@@ -10,6 +10,7 @@ export interface Translation {
   readonly meta: { readonly title: string; readonly description: string };
   readonly nav: NavText;
   readonly hero: HeroText;
+  readonly upcoming: UpcomingText;
   readonly demo: DemoText;
   readonly platforms: PlatformsText;
   readonly how: { readonly title: string; readonly steps: readonly TextBlock[] };
@@ -20,6 +21,13 @@ export interface Translation {
   readonly mobile: MobileText;
   readonly changelog: ChangelogText;
   readonly footer: FooterText;
+}
+
+/** Encart du hero qui annonce la prochaine version de l'extension, avant sa publication. */
+export interface UpcomingText {
+  /** Étiquette devant le texte (ex. « Bientôt »). */
+  readonly label: string;
+  readonly text: string;
 }
 
 /** Page des nouveautés (/<langue>/changelog) et badge du hero qui y mène. */
