@@ -28,10 +28,6 @@
     "noteFirefox": "Kostenlos und Open Source. Funktioniert mit Firefox 142 oder neuer.",
     "noteFirefoxPending": "Kostenlos und Open Source. Die Firefox-Version wird gerade von Mozilla geprüft und erscheint hier, sobald sie freigegeben ist."
   },
-  "upcoming": {
-    "label": "Demnächst",
-    "text": "Die nächste Version von SyncKai bringt eine komplett überarbeitete Oberfläche in 21 Sprachen, Unterstützung für Prime Video, eine deutlich zuverlässigere Erkennung der Animes anhand von Jahr und Folgenzahl sowie Benachrichtigungen über neue Folgen genau dann, wenn sie auf deiner Plattform erscheinen."
-  },
   "demo": {
     "label": "Demo: eine Folge wird zu Beginn des Abspanns synchronisiert",
     "series": "Kumo no Yūbinya",
@@ -79,7 +75,7 @@
         "shot": "03-agenda",
         "eyebrow": "Zeitplan",
         "title": "Deine Folgen *dieser Woche*",
-        "text": "Der Zeitplan listet die neuen Folgen deiner laufenden Serien, mit der geschätzten Uhrzeit auf Crunchyroll oder ADN. Bereits gesehene Folgen sind abgehakt."
+        "text": "Der Zeitplan listet die neuen Folgen deiner laufenden Serien, mit der geschätzten Uhrzeit auf deiner Plattform. Bereits gesehene Folgen sind abgehakt."
       },
       {
         "shot": "04-page-media",
@@ -97,15 +93,17 @@
     "moreTitle": "Außerdem",
     "more": [
       "Staffelerkennung, auch bei durchgehender Nummerierung wie One Piece und bei Staffeln, die auf mehrere Einträge verteilt sind",
-      "Netflix und Disney+, wenn du sie aktivierst (nur Animes)",
+      "Erscheinungsjahr, Folgenzahl und Folgenlänge unterscheiden Remakes und Fortsetzungen",
+      "Netflix, Disney+ und Prime Video, wenn du sie aktivierst (nur Animes)",
       "Eine Liste deiner laufenden Serien mit dem Datum der nächsten Folge und Schaltflächen für +1 / −1",
+      "Ein Kontomenü mit deinen Statistiken und den diese Woche synchronisierten Folgen",
       "AniList und MyAnimeList im Vergleich, mit einem Klick abgeglichen",
       "Eine Bewertung am Ende einer Serie und Unterstützung für erneutes Schauen",
-      "Benachrichtigungen, sobald eine neue Folge deiner Serien erscheint",
+      "Benachrichtigungen über neue Folgen, zur Uhrzeit auf deiner Plattform",
       "Synchros werden nach einem Verbindungsabbruch automatisch wiederholt",
       "Tastenkürzel: Alt+Umschalt+K markiert die aktuelle Folge als gesehen",
       "Sicherung und Wiederherstellung deiner Einstellungen und deines Verlaufs",
-      "Oberfläche auf Deutsch, Englisch und Französisch"
+      "Oberfläche in 21 Sprachen"
     ]
   },
   "privacy": {
@@ -131,7 +129,7 @@
       },
       {
         "q": "Warum sagt mein Browser, dass SyncKai meine Daten auf einigen Websites lesen und ändern kann?",
-        "a": "Das ist die übliche Warnung für jede Erweiterung, die auf einer Website arbeitet. SyncKai nutzt das auf Crunchyroll und ADN, um Serientitel, Staffel, Folgennummer und Wiedergabeposition zu lesen und dort seine Hinweise anzuzeigen. Danach schickt es deinen Fortschritt an AniList und MyAnimeList. Es liest nichts anderes und läuft auf keiner anderen Website. Netflix und Disney+ werden nur angefragt, wenn du sie einschaltest, und der Zugriff wird entfernt, sobald du sie ausschaltest."
+        "a": "Das ist die übliche Warnung für jede Erweiterung, die auf einer Website arbeitet. SyncKai nutzt das auf Crunchyroll und ADN, um Serientitel, Staffel, Folgennummer und Wiedergabeposition zu lesen und dort seine Hinweise anzuzeigen. Danach schickt es deinen Fortschritt an AniList und MyAnimeList. Es liest nichts anderes und läuft auf keiner anderen Website. Netflix, Disney+ und Prime Video werden nur angefragt, wenn du sie einschaltest, und der Zugriff wird entfernt, sobald du sie ausschaltest."
       },
       {
         "q": "Meine Folge wurde nicht synchronisiert. Was tun?",
@@ -173,6 +171,6 @@
     "issues": "Fehler melden",
     "changelog": "Neuigkeiten",
     "privacy": "Datenschutzerklärung",
-    "disclaimer": "SyncKai steht in keiner Verbindung zu Crunchyroll, ADN, Netflix, Disney+, AniList oder MyAnimeList."
+    "disclaimer": "SyncKai steht in keiner Verbindung zu Crunchyroll, ADN, Netflix, Disney+, Prime Video, AniList oder MyAnimeList."
   }
 }

@@ -1,5 +1,44 @@
 [
   {
+    "version": "2.4.0",
+    "date": "2026-10-18",
+    "text": {
+      "en": {
+        "title": "A new look, 21 languages and Prime Video",
+        "highlights": [
+          "A brand-new interface: the popup, the side panel, the settings and the import pages are redesigned, with an account menu that shows your stats.",
+          "SyncKai now speaks 21 languages, including Spanish, Portuguese, Italian, Japanese, Korean and Chinese.",
+          "Prime Video support (optional, anime only), synced at the start of the credits when Prime Video marks them.",
+          "Smarter matching: the release year, the number of episodes and their length tell remakes and sequels apart (Berserk 1997 and 2016). When in doubt, SyncKai asks you instead of guessing.",
+          "New-episode alerts arrive when the episode is out on your platform, no longer at the Japanese broadcast time.",
+          "Redesigned notifications on the player: top right, with the result for each of your lists."
+        ]
+      },
+      "fr": {
+        "title": "Nouvelle interface, 21 langues et Prime Video",
+        "highlights": [
+          "Une toute nouvelle interface : le popup, le panneau latéral, les réglages et les pages d'import sont redessinés, avec un menu du compte qui affiche tes statistiques.",
+          "SyncKai parle maintenant 21 langues, dont l'espagnol, le portugais, l'italien, le japonais, le coréen et le chinois.",
+          "Prime Video pris en charge (en option, animes uniquement), synchronisé au début du générique quand Prime Video l'indique.",
+          "Une reconnaissance plus fiable : l'année de sortie, le nombre d'épisodes et leur durée départagent les remakes et les suites (Berserk de 1997 et de 2016). En cas de doute, SyncKai te demande au lieu de deviner.",
+          "Les alertes de nouvel épisode arrivent quand l'épisode sort sur ta plateforme, et non plus à l'heure de diffusion japonaise.",
+          "Les notifications sur le lecteur sont repensées : en haut à droite, avec le résultat pour chacune de tes listes."
+        ]
+      },
+      "de": {
+        "title": "Neues Design, 21 Sprachen und Prime Video",
+        "highlights": [
+          "Eine komplett neue Oberfläche: Popup, Seitenleiste, Einstellungen und Importseiten sind neu gestaltet, dazu ein Kontomenü mit deinen Statistiken.",
+          "SyncKai spricht jetzt 21 Sprachen, darunter Spanisch, Portugiesisch, Italienisch, Japanisch, Koreanisch und Chinesisch.",
+          "Prime Video wird unterstützt (optional, nur Animes) und zu Beginn des Abspanns synchronisiert, wenn Prime Video ihn markiert.",
+          "Zuverlässigere Erkennung: Erscheinungsjahr, Folgenzahl und Folgenlänge unterscheiden Remakes und Fortsetzungen (Berserk von 1997 und 2016). Im Zweifel fragt SyncKai nach, statt zu raten.",
+          "Benachrichtigungen über neue Folgen kommen, sobald die Folge auf deiner Plattform erscheint, nicht mehr zur japanischen Ausstrahlungszeit.",
+          "Neu gestaltete Hinweise über dem Player: oben rechts, mit dem Ergebnis für jede deiner Listen."
+        ]
+      }
+    }
+  },
+  {
     "version": "2.3.1",
     "date": "2026-10-12",
     "text": {

@@ -58,7 +58,6 @@ import { Privacy } from './sections/privacy/privacy';
         [hero]="t.hero"
         [note]="heroNote()"
         [whatsNew]="whatsNew()"
-        [upcoming]="t.upcoming"
         [demo]="t.demo"
         [stores]="shownStores()"
         [storeLabels]="storeLabels()"

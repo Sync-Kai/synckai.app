@@ -15,6 +15,7 @@ export const STREAMING_PLATFORMS: readonly StreamingPlatform[] = [
   { name: 'ADN', logo: 'assets/brands/adn.png', optional: false },
   { name: 'Netflix', logo: 'assets/brands/netflix.png', optional: true },
   { name: 'Disney+', logo: 'assets/brands/disney.png', optional: true },
+  { name: 'Prime Video', logo: 'assets/brands/prime.png', optional: true },
 ];
 
 /** Où la liste est tenue à jour. */

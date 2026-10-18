@@ -28,10 +28,6 @@
     "noteFirefox": "Free and open source. Works with Firefox 142 or later.",
     "noteFirefoxPending": "Free and open source. The Firefox version is being reviewed by Mozilla and will be available here once approved."
   },
-  "upcoming": {
-    "label": "Coming soon",
-    "text": "The next version of SyncKai brings a fully redesigned interface translated into 21 languages, Prime Video support, much more reliable anime matching using the year and the episode count, and new episode alerts at the time it comes out on your platform."
-  },
   "demo": {
     "label": "Demo of an episode being synced at the ending credits",
     "series": "Kumo no Yūbinya",
@@ -79,7 +75,7 @@
         "shot": "03-agenda",
         "eyebrow": "Schedule",
         "title": "Your releases *this week*",
-        "text": "The schedule lists the new episodes of the series you're watching, with the estimated time on Crunchyroll or ADN. Episodes you've already seen are ticked off."
+        "text": "The schedule lists the new episodes of the series you're watching, at the estimated time on your platform. Episodes you've already seen are ticked off."
       },
       {
         "shot": "04-page-media",
@@ -97,15 +93,17 @@
     "moreTitle": "And also",
     "more": [
       "Season matching, including absolute numbering like One Piece and seasons split across several entries",
-      "Netflix and Disney+, if you turn them on (anime only)",
+      "The release year, the number of episodes and their length tell remakes and sequels apart",
+      "Netflix, Disney+ and Prime Video, if you turn them on (anime only)",
       "A list of your series in progress, with the date of the next episode and +1 / −1 buttons",
+      "An account menu with your stats and the episodes synced this week",
       "AniList and MyAnimeList compared side by side, aligned in one click",
       "A rating prompt at the end of a series, and rewatch support",
-      "Alerts when a new episode of your series is out",
+      "New-episode alerts, at the time the episode is out on your platform",
       "Syncs retried automatically after a network drop",
       "Keyboard shortcuts: Alt+Shift+K marks the current episode as watched",
       "Backup and restore of your settings and history",
-      "Interface in English, French and German"
+      "Interface in 21 languages"
     ]
   },
   "privacy": {
@@ -131,7 +129,7 @@
       },
       {
         "q": "Why does my browser say SyncKai can read and change my data on some sites?",
-        "a": "It's the standard warning for any extension that works on a website. SyncKai uses it on Crunchyroll and ADN to read the series title, season, episode number and playback position, and to show its notifications there. It then sends your progress to AniList and MyAnimeList. It reads nothing else and runs on no other site. Netflix and Disney+ are only requested if you turn them on, and the access is removed when you turn them off."
+        "a": "It's the standard warning for any extension that works on a website. SyncKai uses it on Crunchyroll and ADN to read the series title, season, episode number and playback position, and to show its notifications there. It then sends your progress to AniList and MyAnimeList. It reads nothing else and runs on no other site. Netflix, Disney+ and Prime Video are only requested if you turn them on, and the access is removed when you turn them off."
       },
       {
         "q": "My episode wasn't synced. What should I do?",
@@ -173,6 +171,6 @@
     "issues": "Report a bug",
     "changelog": "What's new",
     "privacy": "Privacy policy",
-    "disclaimer": "SyncKai is not affiliated with Crunchyroll, ADN, Netflix, Disney+, AniList or MyAnimeList."
+    "disclaimer": "SyncKai is not affiliated with Crunchyroll, ADN, Netflix, Disney+, Prime Video, AniList or MyAnimeList."
   }
 }

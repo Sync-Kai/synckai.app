@@ -155,13 +155,6 @@ describe('LandingPage', () => {
     expect(page.querySelectorAll('sk-desktop-only-notice')).toHaveLength(2);
     expect(page.querySelector('sk-hero')?.textContent).toContain(fr.mobile.text);
     expect(page.querySelector('sk-hero')?.textContent).not.toContain(fr.hero.note);
-    expect(page.querySelector('sk-hero')?.textContent).toContain(fr.upcoming.text);
-  });
-
-  it('annonce la prochaine version de l’extension dans le hero', () => {
-    const hero = render('fr').querySelector('sk-hero')?.textContent ?? '';
-    expect(hero).toContain(fr.upcoming.label);
-    expect(hero).toContain(fr.upcoming.text);
   });
 
   it('partage le lien de la page dans la langue du visiteur, puis confirme la copie', async () => {

@@ -28,10 +28,6 @@
     "noteFirefox": "Gratuit et open source. Fonctionne avec Firefox 142 ou plus récent.",
     "noteFirefoxPending": "Gratuit et open source. La version Firefox est en cours de validation par Mozilla : elle arrivera ici dès qu'elle sera acceptée."
   },
-  "upcoming": {
-    "label": "Bientôt",
-    "text": "La prochaine version de SyncKai arrive avec une interface entièrement repensée et traduite en 21 langues, la prise en charge de Prime Video, une reconnaissance des animes bien plus fiable grâce à l'année et au nombre d'épisodes, et des alertes de nouvel épisode à l'heure où il sort sur ta plateforme."
-  },
   "demo": {
     "label": "Démonstration d'un épisode synchronisé au générique de fin",
     "series": "Kumo no Yūbinya",
@@ -79,7 +75,7 @@
         "shot": "03-agenda",
         "eyebrow": "Agenda",
         "title": "Tes sorties *de la semaine*",
-        "text": "L'agenda liste les nouveaux épisodes de tes séries en cours, avec l'heure estimée sur Crunchyroll ou ADN. Les épisodes déjà vus sont cochés."
+        "text": "L'agenda liste les nouveaux épisodes de tes séries en cours, à l'heure estimée sur ta plateforme. Les épisodes déjà vus sont cochés."
       },
       {
         "shot": "04-page-media",
@@ -97,15 +93,17 @@
     "moreTitle": "Et aussi",
     "more": [
       "Reconnaissance des saisons, y compris la numérotation absolue comme One Piece et les saisons découpées en plusieurs fiches",
-      "Netflix et Disney+, si tu les actives (animes uniquement)",
+      "L'année de sortie, le nombre d'épisodes et leur durée départagent les remakes et les suites",
+      "Netflix, Disney+ et Prime Video, si tu les actives (animes uniquement)",
       "La liste de tes séries en cours, avec la date du prochain épisode et des boutons +1 / −1",
+      "Un menu du compte avec tes statistiques et les épisodes synchronisés cette semaine",
       "AniList et MyAnimeList comparés côte à côte, alignés en un clic",
       "Une note proposée en fin de série, et la prise en charge du revisionnage",
-      "Des alertes à la sortie d'un nouvel épisode de tes séries",
+      "Des alertes de nouvel épisode, à l'heure de sortie sur ta plateforme",
       "Les synchros relancées automatiquement après une coupure réseau",
       "Des raccourcis clavier : Alt+Maj+K valide l'épisode en cours",
       "La sauvegarde et la restauration de tes réglages et de ton historique",
-      "Une interface en français, anglais et allemand"
+      "Une interface en 21 langues"
     ]
   },
   "privacy": {
@@ -131,7 +129,7 @@
       },
       {
         "q": "Pourquoi mon navigateur dit que SyncKai peut lire et modifier mes données sur certains sites ?",
-        "a": "C'est l'avertissement standard pour toute extension qui agit sur un site. SyncKai s'en sert sur Crunchyroll et ADN pour lire le titre, la saison, le numéro de l'épisode et la position de lecture, et pour y afficher ses notifications. Il envoie ensuite ta progression à AniList et MyAnimeList. Il ne lit rien d'autre et ne tourne sur aucun autre site. Netflix et Disney+ ne sont demandés que si tu les actives, et l'accès est retiré quand tu les désactives."
+        "a": "C'est l'avertissement standard pour toute extension qui agit sur un site. SyncKai s'en sert sur Crunchyroll et ADN pour lire le titre, la saison, le numéro de l'épisode et la position de lecture, et pour y afficher ses notifications. Il envoie ensuite ta progression à AniList et MyAnimeList. Il ne lit rien d'autre et ne tourne sur aucun autre site. Netflix, Disney+ et Prime Video ne sont demandés que si tu les actives, et l'accès est retiré quand tu les désactives."
       },
       {
         "q": "Mon épisode n'a pas été synchronisé. Que faire ?",
@@ -173,6 +171,6 @@
     "issues": "Signaler un bug",
     "changelog": "Nouveautés",
     "privacy": "Politique de confidentialité",
-    "disclaimer": "SyncKai n'est affilié ni à Crunchyroll, ni à ADN, ni à Netflix, ni à Disney+, ni à AniList, ni à MyAnimeList."
+    "disclaimer": "SyncKai n'est affilié ni à Crunchyroll, ni à ADN, ni à Netflix, ni à Disney+, ni à Prime Video, ni à AniList, ni à MyAnimeList."
   }
 }
