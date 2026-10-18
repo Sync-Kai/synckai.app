@@ -5,6 +5,23 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-10-18
+
+### Added
+
+- What's new: version 2.4.0 of the extension (new interface, 21 languages, Prime Video, smarter matching, new-episode alerts at the platform's time, redesigned player notifications), in every language.
+- Prime Video among the supported platforms (optional, anime only), with the logos of every platform and list service next to their names.
+
+### Changed
+
+- The site follows the redesigned interface of the extension 2.4.0: its dark « Kotatsu » colours and fonts, the Kai logo with シンカイ, and the editorial layout of its new store images (a katakana watermark on the left edge, a short uppercase label, one highlighted word per title, the platforms → AniList / MyAnimeList logo row).
+- The hero demo ends on the extension's new notification, and the feature blocks show the 2.4.0 screens.
+- The preview image shared on social networks is the new store banner.
+
+### Removed
+
+- The "Coming soon" box: version 2.4.0 is out.
+
 ## [1.7.0] - 2026-10-17
 
 ### Added
