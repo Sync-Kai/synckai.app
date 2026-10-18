@@ -24,8 +24,10 @@ import { Icon } from '@shared/ui/icon/icon';
   template: `
     <button
       type="button"
-      class="flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-sm font-bold"
-      [class]="open() ? 'border-violet text-moon' : 'border-ink-line text-mist hover:text-moon'"
+      class="flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-extrabold"
+      [class]="
+        open() ? 'border-field bg-raised text-ink' : 'border-field text-muted hover:text-ink'
+      "
       [attr.aria-label]="label()"
       [attr.aria-expanded]="open()"
       aria-haspopup="true"
@@ -36,7 +38,7 @@ import { Icon } from '@shared/ui/icon/icon';
     </button>
     @if (open()) {
       <ul
-        class="absolute top-[calc(100%+8px)] right-0 m-0 min-w-40 list-none rounded-[14px] border border-ink-line bg-ink p-1.5 shadow-[0_18px_40px_rgb(5_8_30/0.5)]"
+        class="absolute top-[calc(100%+8px)] right-0 m-0 min-w-40 list-none rounded-xl border border-field bg-raised p-1.5 shadow-pop"
       >
         @for (language of languages(); track language.code) {
           <li>
@@ -45,7 +47,7 @@ import { Icon } from '@shared/ui/icon/icon';
               [attr.hreflang]="language.code"
               [attr.lang]="language.code"
               [attr.aria-current]="language.code === current() ? 'true' : null"
-              class="block rounded-[9px] px-3 py-2 no-underline hover:bg-violet/20 aria-[current]:text-cyan"
+              class="block rounded-[9px] px-3 py-2 no-underline hover:bg-surface aria-[current]:text-lavender"
               (click)="pick(language.code)"
               >{{ language.name }}</a
             >

@@ -36,8 +36,8 @@ describe('StoreButtons', () => {
   it('place le store préféré en premier et le met en évidence', () => {
     const anchors = Array.from(render(both, 'firefox').querySelectorAll('a'));
     expect(anchors[0].textContent?.trim()).toBe('Add to Firefox');
-    expect(anchors[0].classList).toContain('bg-kai');
-    expect(anchors[1].classList).not.toContain('bg-kai');
+    expect(anchors[0].classList).toContain('bg-sakura');
+    expect(anchors[1].classList).not.toContain('bg-sakura');
   });
 
   it('affiche un store indisponible comme une mention, sans lien, en dernier', () => {

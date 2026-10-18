@@ -18,7 +18,8 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "title": "Your anime list, updated at the credits.",
+    "eyebrow": "Anime tracking",
+    "title": "Your anime list, updated at the *credits*.",
     "lead": "Watch on Crunchyroll or ADN as usual. When the ending credits start, SyncKai saves the episode to AniList and MyAnimeList. You never type an episode number again.",
     "chrome": "Add to Chrome",
     "firefox": "Add to Firefox",
@@ -38,8 +39,9 @@
     "episode": "Episode",
     "credits": "Credits",
     "roll": ["Original story", "Director", "Character design", "Music", "Animation production"],
-    "list": "Your list",
     "saved": "Episode 8 saved",
+    "services": "AniList and MyAnimeList",
+    "status": "saved",
     "replay": "Replay"
   },
   "platforms": {
@@ -48,7 +50,7 @@
     "optional": "optional"
   },
   "how": {
-    "title": "Three steps, then nothing to do",
+    "title": "Three steps, then *nothing to do*",
     "steps": [
       {
         "title": "Install the extension",
@@ -65,26 +67,30 @@
     ]
   },
   "features": {
-    "title": "Everything around the episode",
+    "title": "Everything around *the episode*",
     "items": [
       {
         "shot": "02-side-panel",
-        "title": "The episode, beside the video",
+        "eyebrow": "Side panel",
+        "title": "The episode, *right beside the video*",
         "text": "The side panel shows the AniList entry, your live progress before the sync, the next season to watch and a link to the episode discussion."
       },
       {
         "shot": "03-agenda",
-        "title": "This week's releases",
+        "eyebrow": "Schedule",
+        "title": "Your releases *this week*",
         "text": "The schedule lists the new episodes of the series you're watching, with the estimated time on Crunchyroll or ADN. Episodes you've already seen are ticked off."
       },
       {
         "shot": "04-page-media",
-        "title": "Edit your list without leaving the page",
+        "eyebrow": "On this page",
+        "title": "The AniList entry for *what you're watching*",
         "text": "On a series page, add it to your list or change progress, status and score in a couple of clicks."
       },
       {
         "shot": "05-cr-import",
-        "title": "Catch up on your history",
+        "eyebrow": "Import",
+        "title": "Your history, *caught up*",
         "text": "Import your Crunchyroll, ADN or Netflix history. You see a preview first, and nothing uncertain is written without your say."
       }
     ],
@@ -103,7 +109,7 @@
     ]
   },
   "privacy": {
-    "title": "Nothing leaves your browser, except for your list",
+    "title": "Nothing leaves your browser, *except for your list*",
     "text": "SyncKai has no server. Your settings, history and sign-ins stay in your browser, and the extension only talks to AniList and MyAnimeList.",
     "points": [
       "No account with SyncKai",
@@ -142,7 +148,8 @@
     ]
   },
   "cta": {
-    "title": "Your next episode is already synced.",
+    "eyebrow": "Up next",
+    "title": "Your next episode is *already synced*.",
     "text": "Install SyncKai, connect your list, and press play."
   },
   "mobile": {
@@ -154,6 +161,7 @@
   "changelog": {
     "metaTitle": "What's new in SyncKai",
     "metaDescription": "The latest versions of SyncKai, the extension that updates your AniList and MyAnimeList list at the credits: new features and fixes in a few words.",
+    "eyebrow": "Release notes",
     "title": "What's new",
     "lead": "The main changes of each SyncKai version, in a few words.",
     "badge": "New",

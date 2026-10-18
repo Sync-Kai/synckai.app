@@ -1,5 +1,7 @@
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { SHOT_KANA } from '@domain/kana';
+import { screenshotPath } from '@domain/screenshot';
 import { TRANSLATION_DATA } from './index';
 import siteConfig from '../site.config.json';
 
@@ -64,6 +66,28 @@ describe('traductions', () => {
         expect(translation.features.items.map((i) => i.shot)).toEqual(
           reference.features.items.map((i) => i.shot),
         );
+      });
+
+      it('illustre chaque fonctionnalité par une capture existante et son kana', () => {
+        for (const { shot } of translation.features.items) {
+          const path = screenshotPath(siteConfig.screenshots, translation.code, shot);
+          expect(existsSync(join(process.cwd(), 'public', path)), path).toBe(true);
+          expect(SHOT_KANA[shot], shot).toBeTruthy();
+        }
+      });
+
+      it('met en avant au plus un groupe de mots par titre, jamais une marque orpheline', () => {
+        const titles = [
+          translation.hero.title,
+          translation.how.title,
+          translation.features.title,
+          ...translation.features.items.map((i) => i.title),
+          translation.privacy.title,
+          translation.cta.title,
+        ];
+        for (const title of titles) {
+          expect(title.split('*').length, title).toBe(3);
+        }
       });
     });
   }

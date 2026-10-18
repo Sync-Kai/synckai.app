@@ -14,6 +14,8 @@ import { BrowserEnvironment } from '@core/platform/browser-environment';
 import { SeoService } from '@core/seo/seo.service';
 import { RELEASES, SITE_CONFIG } from '@core/tokens';
 import { MobileNotice, ShareOutcome, isMobileDevice } from '@domain/device';
+import { plainText } from '@domain/emphasis';
+import { SHOT_KANA } from '@domain/kana';
 import { LanguageCode } from '@domain/language';
 import { localizeReleases } from '@domain/release';
 import { screenshotPath } from '@domain/screenshot';
@@ -65,18 +67,18 @@ import { Privacy } from './sections/privacy/privacy';
         (share)="shareLink()"
       />
       <sk-platforms [text]="t.platforms" />
-      <sk-how-it-works [title]="t.how.title" [steps]="t.how.steps" />
+      <sk-how-it-works [eyebrow]="t.nav.how" [title]="t.how.title" [steps]="t.how.steps" />
       <sk-feature-showcase
+        [eyebrow]="t.nav.features"
         [title]="t.features.title"
         [items]="showcase()"
         [moreTitle]="t.features.moreTitle"
         [more]="t.features.more"
       />
       <sk-privacy [text]="t.privacy" [policyUrl]="site.privacyPolicy" />
-      <sk-faq [title]="t.faq.title" [items]="t.faq.items" />
+      <sk-faq [eyebrow]="t.nav.faq" [title]="t.faq.title" [items]="t.faq.items" />
       <sk-closing-cta
-        [title]="t.cta.title"
-        [text]="t.cta.text"
+        [text]="t.cta"
         [stores]="shownStores()"
         [storeLabels]="storeLabels()"
         [preferred]="preferred()"
@@ -120,8 +122,11 @@ export class LandingPage {
   protected readonly showcase = computed((): ShowcaseItem[] => {
     const t = this.translation();
     return t.features.items.map((item) => ({
+      eyebrow: item.eyebrow,
       title: item.title,
+      plainTitle: plainText(item.title),
       text: item.text,
+      kana: SHOT_KANA[item.shot] ?? '',
       image: screenshotPath(this.site.screenshots, t.code, item.shot),
     }));
   });

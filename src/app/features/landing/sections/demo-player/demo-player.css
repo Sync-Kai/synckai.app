@@ -2,19 +2,21 @@
 :host {
   display: block;
   position: relative;
+  padding-top: 132px;
 }
 
 .sky {
   background:
-    radial-gradient(circle at 72% 30%, rgb(255 214 160 / 0.9) 0 7%, transparent 8%),
-    radial-gradient(120% 90% at 70% 20%, #f49bc0 0%, #8c6bff 38%, #2a3590 72%, #141a3d 100%);
+    radial-gradient(circle at 74% 26%, rgb(255 143 184 / 0.55) 0 6%, transparent 7%),
+    radial-gradient(60% 80% at 75% 25%, #6a3c6e 0%, transparent 60%),
+    linear-gradient(180deg, #1d1640, #3a2a63 70%, #2a2048);
   transition: filter 1.2s ease;
 }
 
 .hill {
   background:
-    radial-gradient(60% 100% at 30% 100%, #1b2257 60%, transparent 61%),
-    radial-gradient(70% 90% at 85% 100%, #10153a 60%, transparent 61%);
+    radial-gradient(60% 100% at 30% 100%, #140f26 60%, transparent 61%),
+    radial-gradient(70% 90% at 85% 100%, #0f0b1d 60%, transparent 61%);
   transition: opacity 1.2s ease;
 }
 
@@ -24,7 +26,7 @@
 }
 
 :host(.credits) .sky {
-  filter: brightness(0.25) saturate(0.6);
+  filter: brightness(0.35) saturate(0.7);
 }
 
 :host(.credits) .hill {
@@ -45,45 +47,15 @@
   }
 }
 
-.entry {
-  margin-right: -18px;
-}
-
-.replay {
-  visibility: hidden;
-}
-
-:host(.saved) .replay {
-  visibility: visible;
-}
-
-.cover {
-  background: linear-gradient(160deg, #f49bc0, #8c6bff 55%, #2a3590);
-}
-
-.count > span {
-  transition: transform 0.45s cubic-bezier(0.3, 1.4, 0.5, 1);
-}
-
-:host(.saved) .count > span {
-  transform: translateY(-100%);
-}
-
-:host(.saved) .count > span:last-child {
-  color: var(--color-cyan);
-}
-
-.list-progress {
-  width: calc(7 / 12 * 100%);
-  transition: width 0.6s ease;
-}
-
-:host(.saved) .list-progress {
-  width: calc(8 / 12 * 100%);
-}
-
+/* La bulle garde sa place avant la synchro (pas de saut de mise en page), puis apparaît comme dans l'extension. */
 .toast {
-  animation: rise 0.35s ease both;
+  visibility: hidden;
+  min-height: 112px;
+}
+
+.toast.shown {
+  visibility: visible;
+  animation: rise 0.16s ease-out both;
 }
 
 @keyframes rise {
@@ -94,8 +66,8 @@
 }
 
 @media (max-width: 900px) {
-  .entry {
-    margin-right: 0;
+  :host {
+    padding-top: 0;
   }
 }
 

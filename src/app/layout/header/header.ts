@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input, output } from '@an
 import { RouterLink } from '@angular/router';
 import { Language, LanguageCode } from '@domain/language';
 import { NavText } from '@domain/translation';
+import { Lockup } from '@shared/ui/lockup/lockup';
 import { LanguageMenu } from '../language-menu/language-menu';
 
 /**
@@ -10,34 +11,28 @@ import { LanguageMenu } from '../language-menu/language-menu';
  */
 @Component({
   selector: 'sk-header',
-  imports: [RouterLink, LanguageMenu],
+  imports: [RouterLink, Lockup, LanguageMenu],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class:
-      'sticky top-0 z-10 flex items-center gap-7 border-b border-violet/20 bg-night/85 px-[clamp(16px,4vw,40px)] py-3.5 backdrop-blur-md',
+      'sticky top-0 z-10 flex items-center gap-7 border-b border-line bg-ground/85 px-[clamp(16px,4vw,40px)] py-3.5 backdrop-blur-md',
   },
   template: `
     <a
       [routerLink]="[]"
       fragment="main"
-      class="absolute -left-[9999px] rounded-lg bg-moon px-3.5 py-2 text-night focus:top-4 focus:left-4"
+      class="absolute -left-[9999px] rounded-lg bg-ink px-3.5 py-2 text-ground focus:top-4 focus:left-4"
       >{{ nav().skip }}</a
     >
-    <a [routerLink]="['/', current()]" class="shrink-0">
-      <img
-        src="assets/kai-lockup-dark.svg"
-        alt="SyncKai"
-        width="162"
-        height="40"
-        class="h-10 w-auto max-sm:h-[34px]"
-      />
+    <a [routerLink]="['/', current()]" class="shrink-0 no-underline" aria-label="SyncKai">
+      <sk-lockup />
     </a>
     <nav aria-label="SyncKai" class="ml-auto flex gap-6 max-[900px]:hidden">
       @for (link of links(); track link.fragment) {
         <a
           [routerLink]="['/', current()]"
           [fragment]="link.fragment"
-          class="text-[15px] font-medium text-mist no-underline hover:text-moon"
+          class="text-[15px] font-bold text-muted no-underline hover:text-ink"
           >{{ link.label }}</a
         >
       }

@@ -24,9 +24,9 @@ const END = 0.97;
 const CREDIT_NAMES = ['K. Aoyama', 'M. Tsukishiro', 'H. Imai', 'R. Kanda', 'Studio Nagi'];
 
 /**
- * Démo du héros : la tête de lecture atteint le marqueur du générique, puis l'épisode
- * passe de 7 à 8 dans la liste. Lancée quand elle devient visible ; état final direct
- * si le visiteur demande moins d'animations.
+ * Démo du héros : la tête de lecture atteint le marqueur du générique, puis la bulle de l'extension
+ * (charte 2.4.0) confirme l'épisode sur AniList et MyAnimeList. Lancée quand elle devient visible ;
+ * état final direct si le visiteur demande moins d'animations.
  */
 @Component({
   selector: 'sk-demo-player',

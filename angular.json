@@ -33,13 +33,13 @@
               }
             ],
             "styles": [
-              "node_modules/@fontsource/m-plus-rounded-1c/latin-400.css",
-              "node_modules/@fontsource/m-plus-rounded-1c/latin-500.css",
-              "node_modules/@fontsource/m-plus-rounded-1c/latin-700.css",
+              "node_modules/@fontsource/nunito/latin-600.css",
+              "node_modules/@fontsource/nunito/latin-700.css",
+              "node_modules/@fontsource/nunito/latin-800.css",
+              "node_modules/@fontsource/nunito/latin-ext-600.css",
+              "node_modules/@fontsource/nunito/latin-ext-700.css",
+              "node_modules/@fontsource/nunito/latin-ext-800.css",
               "node_modules/@fontsource/m-plus-rounded-1c/latin-800.css",
-              "node_modules/@fontsource/m-plus-rounded-1c/latin-ext-400.css",
-              "node_modules/@fontsource/m-plus-rounded-1c/latin-ext-500.css",
-              "node_modules/@fontsource/m-plus-rounded-1c/latin-ext-700.css",
               "node_modules/@fontsource/m-plus-rounded-1c/latin-ext-800.css",
               "src/styles.css"
             ],

@@ -18,7 +18,8 @@
     "skip": "Zum Inhalt springen"
   },
   "hero": {
-    "title": "Deine Anime-Liste, aktuell ab dem Abspann.",
+    "eyebrow": "Anime-Tracking",
+    "title": "Deine Anime-Liste, aktuell ab dem *Abspann*.",
     "lead": "Schau wie gewohnt auf Crunchyroll oder ADN. Sobald der Abspann beginnt, speichert SyncKai die Folge auf AniList und MyAnimeList. Du tippst nie wieder eine Folgennummer ein.",
     "chrome": "Zu Chrome hinzufügen",
     "firefox": "Zu Firefox hinzufügen",
@@ -38,8 +39,9 @@
     "episode": "Folge",
     "credits": "Abspann",
     "roll": ["Originalwerk", "Regie", "Charakterdesign", "Musik", "Animationsstudio"],
-    "list": "Deine Liste",
     "saved": "Folge 8 gespeichert",
+    "services": "AniList und MyAnimeList",
+    "status": "gespeichert",
     "replay": "Nochmal abspielen"
   },
   "platforms": {
@@ -48,7 +50,7 @@
     "optional": "optional"
   },
   "how": {
-    "title": "Drei Schritte, danach nichts mehr zu tun",
+    "title": "Drei Schritte, danach *nichts mehr* zu tun",
     "steps": [
       {
         "title": "Erweiterung installieren",
@@ -65,26 +67,30 @@
     ]
   },
   "features": {
-    "title": "Alles rund um die Folge",
+    "title": "Alles rund um *die Folge*",
     "items": [
       {
         "shot": "02-side-panel",
-        "title": "Die Folge, neben dem Video",
+        "eyebrow": "Seitenleiste",
+        "title": "Die ganze Folge, *neben dem Video*",
         "text": "Die Seitenleiste zeigt den AniList-Eintrag, deinen Fortschritt live bis zur Synchro, die nächste Staffel und einen Link zur Diskussion der Folge."
       },
       {
         "shot": "03-agenda",
-        "title": "Die Folgen dieser Woche",
+        "eyebrow": "Zeitplan",
+        "title": "Deine Folgen *dieser Woche*",
         "text": "Der Zeitplan listet die neuen Folgen deiner laufenden Serien, mit der geschätzten Uhrzeit auf Crunchyroll oder ADN. Bereits gesehene Folgen sind abgehakt."
       },
       {
         "shot": "04-page-media",
-        "title": "Liste bearbeiten, ohne die Seite zu verlassen",
+        "eyebrow": "Auf dieser Seite",
+        "title": "AniList-Eintrag zu *deiner Serie*",
         "text": "Auf einer Serienseite fügst du sie mit wenigen Klicks deiner Liste hinzu oder änderst Fortschritt, Status und Bewertung."
       },
       {
         "shot": "05-cr-import",
-        "title": "Deinen Verlauf nachholen",
+        "eyebrow": "Import",
+        "title": "Dein Verlauf, *nachgeholt*",
         "text": "Importiere deinen Verlauf von Crunchyroll, ADN oder Netflix. Du siehst zuerst eine Vorschau, und nichts Unsicheres wird ohne dich geschrieben."
       }
     ],
@@ -103,7 +109,7 @@
     ]
   },
   "privacy": {
-    "title": "Nichts verlässt deinen Browser, außer deiner Liste",
+    "title": "Nichts verlässt deinen Browser, *außer deiner Liste*",
     "text": "SyncKai hat keinen Server. Deine Einstellungen, dein Verlauf und deine Anmeldungen bleiben in deinem Browser, und die Erweiterung spricht nur mit AniList und MyAnimeList.",
     "points": [
       "Kein SyncKai-Konto",
@@ -142,7 +148,8 @@
     ]
   },
   "cta": {
-    "title": "Deine nächste Folge ist schon synchronisiert.",
+    "eyebrow": "Als Nächstes",
+    "title": "Deine nächste Folge ist *schon synchronisiert*.",
     "text": "Installiere SyncKai, verbinde deine Liste und drück auf Play."
   },
   "mobile": {
@@ -154,6 +161,7 @@
   "changelog": {
     "metaTitle": "Neuigkeiten bei SyncKai",
     "metaDescription": "Die neuesten Versionen von SyncKai, der Erweiterung, die deine AniList- und MyAnimeList-Liste ab dem Abspann aktualisiert: neue Funktionen und Korrekturen in wenigen Worten.",
+    "eyebrow": "Versionshinweise",
     "title": "Neuigkeiten",
     "lead": "Die wichtigsten Änderungen jeder SyncKai-Version, in wenigen Worten.",
     "badge": "Neu",

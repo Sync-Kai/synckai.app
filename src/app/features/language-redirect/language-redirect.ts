@@ -19,7 +19,7 @@ import { SeoService } from '@core/seo/seo.service';
           [routerLink]="['/', language.code]"
           [attr.hreflang]="language.code"
           [attr.lang]="language.code"
-          class="text-cyan"
+          class="text-lavender"
           >{{ language.name }}</a
         >
       }

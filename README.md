@@ -65,6 +65,10 @@ Conventions: one container per page reads the route and services, sections only 
 
 Each time a version of the extension is published, add it at the top of `src/app/data/releases.json`: its `version`, its `date` (`YYYY-MM-DD`) and, for every language of the site, a short `title` and a few `highlights`. These are plain sentences for anime fans, not a copy of the extension's technical `CHANGELOG.md`, which the page links to. The hero badge and the structured data follow the latest version by themselves. The tests fail if a language is missing, if the languages don't have the same number of highlights, or if the versions are out of order.
 
+## Updating the screenshots
+
+The feature blocks show the right half of the extension's store shots (`docs/store/screenshots/<lang>/0{2..5}-*.png` in the extension repository, 1280×800, made by its `npm run screenshots`): crop each one at x 610 to 670×800 (the « stage » surface with the disc and the floating UI), save it as WebP (quality about 85) under the same name in `public/assets/shots/<lang>/`. The text column is written by the site from the translations, so never use the full shot (it carries its own caption). The tests fail if a shot is missing for a language listed in `screenshots.languages`. `public/assets/og.png` is a copy of the extension's `docs/store/promo-1400x560.png`.
+
 ## Firefox availability
 
 While the Firefox add-on awaits Mozilla's review, `stores.firefoxPublished` is `false` in `src/app/data/site.config.json`: the Firefox button shows "Coming soon to Firefox" without a link, and `/firefox` leads to the home page. Once the listing is public, set it to `true` and deploy.

@@ -4,7 +4,7 @@ import { ExternalLink } from '../external-link/external-link';
 import { Icon } from '../icon/icon';
 
 /**
- * Boutons d'installation ; le store mis en avant passe en premier.
+ * Boutons d'installation ; le store mis en avant passe en premier, en sakura plein (la seule action principale).
  * Un store pas encore public s'affiche comme une mention non cliquable, jamais comme un lien mort.
  */
 @Component({
@@ -18,11 +18,11 @@ import { Icon } from '../icon/icon';
         <a
           skExternal
           [href]="store.url"
-          class="inline-flex items-center gap-2.5 rounded-full border-[1.5px] px-[22px] py-[13px] font-bold no-underline transition active:translate-y-px max-sm:flex-[1_1_100%] max-sm:justify-center"
+          class="inline-flex items-center gap-2.5 rounded-full border px-[22px] py-[13px] font-extrabold no-underline transition active:translate-y-px max-sm:flex-[1_1_100%] max-sm:justify-center"
           [class]="
             store.id === preferred()
-              ? 'border-transparent bg-kai text-white shadow-[0_8px_28px_rgb(124_92_255/0.35)] hover:brightness-110'
-              : 'border-ink-line text-moon hover:border-cyan'
+              ? 'border-transparent bg-sakura text-on-fill shadow-pop hover:brightness-105'
+              : 'border-field text-ink hover:border-lavender'
           "
         >
           <sk-icon [name]="store.id" class="size-5" />
@@ -30,7 +30,7 @@ import { Icon } from '../icon/icon';
         </a>
       } @else {
         <span
-          class="inline-flex items-center gap-2.5 rounded-full border-[1.5px] border-dashed border-ink-line px-[22px] py-[13px] font-medium text-mist max-sm:flex-[1_1_100%] max-sm:justify-center"
+          class="inline-flex items-center gap-2.5 rounded-full border border-dashed border-line px-[22px] py-[13px] font-semibold text-muted max-sm:flex-[1_1_100%] max-sm:justify-center"
         >
           <sk-icon [name]="store.id" class="size-5" />
           <span>{{ labels()[store.id] }}</span>

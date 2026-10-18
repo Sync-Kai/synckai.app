@@ -114,7 +114,7 @@ describe('LandingPage', () => {
     const link = hero.querySelector<HTMLAnchorElement>('a[href*="addons.mozilla.org"]');
     expect(link?.getAttribute('href')).toBe('https://addons.mozilla.org/fr/firefox/addon/synckai/');
     expect(link?.textContent).toContain(fr.hero.firefox);
-    expect(link?.classList).toContain('bg-kai');
+    expect(link?.classList).toContain('bg-sakura');
     expect(hero.querySelector('a[href*="chromewebstore"]')).toBeNull();
     expect(hero.textContent).toContain(fr.hero.noteFirefox);
     expect(hero.textContent).not.toContain(fr.hero.noteFirefoxPending);

@@ -1,4 +1,5 @@
 import { isMobileDevice } from './device';
+import { plainText, splitEmphasis } from './emphasis';
 import { pickLanguage } from './language';
 import { Release, compareVersions, formatReleaseDate, localizeReleases } from './release';
 import { formatPlaybackTime, interpolate } from './playback';
@@ -163,6 +164,32 @@ describe('browserFamily', () => {
       expect(ids(agents.safari)).toEqual(['chrome', 'firefox']);
       expect(ids('')).toEqual(['chrome', 'firefox']);
     });
+  });
+});
+
+describe('splitEmphasis', () => {
+  it('sépare les mots mis en avant du reste du titre', () => {
+    expect(splitEmphasis('Ta liste à jour dès le *générique*.')).toEqual([
+      { text: 'Ta liste à jour dès le ', accent: false },
+      { text: 'générique', accent: true },
+      { text: '.', accent: false },
+    ]);
+  });
+
+  it('accepte plusieurs mots mis en avant, au début comme à la fin', () => {
+    expect(splitEmphasis('*Un* et *deux*')).toEqual([
+      { text: 'Un', accent: true },
+      { text: ' et ', accent: false },
+      { text: 'deux', accent: true },
+    ]);
+  });
+
+  it('laisse un titre sans marque tel quel', () => {
+    expect(splitEmphasis('Questions')).toEqual([{ text: 'Questions', accent: false }]);
+  });
+
+  it('retire les marques pour un texte alternatif', () => {
+    expect(plainText('Ton historique, *rattrapé*')).toBe('Ton historique, rattrapé');
   });
 });
 

@@ -17,7 +17,7 @@ export interface Translation {
   readonly features: FeaturesText;
   readonly privacy: PrivacyText;
   readonly faq: { readonly title: string; readonly items: readonly FaqItem[] };
-  readonly cta: { readonly title: string; readonly text: string };
+  readonly cta: CtaText;
   readonly mobile: MobileText;
   readonly changelog: ChangelogText;
   readonly footer: FooterText;
@@ -31,9 +31,20 @@ export interface UpcomingText {
 }
 
 /** Page des nouveautés (/<langue>/changelog) et badge du hero qui y mène. */
+/** Appel final de l'accueil. */
+export interface CtaText {
+  /** Surtitre, à côté du kana ツヅキ. */
+  readonly eyebrow: string;
+  /** Titre ; les mots entre astérisques sont mis en avant. */
+  readonly title: string;
+  readonly text: string;
+}
+
 export interface ChangelogText {
   readonly metaTitle: string;
   readonly metaDescription: string;
+  /** Surtitre, à côté du kana コウシン. */
+  readonly eyebrow: string;
   readonly title: string;
   readonly lead: string;
   /** Étiquette du badge du hero, devant le numéro de version (ex. « Nouveau »). */
@@ -68,6 +79,9 @@ export interface NavText {
 }
 
 export interface HeroText {
+  /** Surtitre, à côté du kana ジドウ. */
+  readonly eyebrow: string;
+  /** Titre ; les mots entre astérisques sont mis en avant. */
   readonly title: string;
   readonly lead: string;
   readonly chrome: string;
@@ -88,8 +102,12 @@ export interface DemoText {
   readonly episode: string;
   readonly credits: string;
   readonly roll: readonly string[];
-  readonly list: string;
+  /** Titre de la bulle (« Épisode 8 enregistré »), comme dans l'extension. */
   readonly saved: string;
+  /** Ligne des services de la bulle (« AniList et MyAnimeList »). */
+  readonly services: string;
+  /** État des services, après leurs noms (« enregistré »). */
+  readonly status: string;
   readonly replay: string;
 }
 
@@ -105,6 +123,8 @@ export interface TextBlock {
 }
 
 export interface FeatureItem extends TextBlock {
+  /** Surtitre du bloc (« Panneau latéral »), à côté du kana de la capture. */
+  readonly eyebrow: string;
   /** Nom de la capture, sans extension, dans assets/shots/<langue>/. */
   readonly shot: string;
 }

@@ -1,29 +1,48 @@
 @import 'tailwindcss';
 
-/* Jetons de design du site. Les couleurs viennent de Kai, la mascotte de l'extension. */
+/*
+ * Jetons de design du site : la charte « Kotatsu » de l'extension depuis la 2.4.0
+ * (docs/design/README.md et src/ui/theme.css du dépôt SyncKai), plus les deux teintes
+ * des captures du store (scripts/screenshots/banner.css) : la surface « stage » et le filigrane des kana.
+ */
 @theme {
-  --color-night: #141a3d;
-  --color-night-deep: #0e1230;
-  --color-ink: #1f2a66;
-  --color-ink-line: #2e3a80;
-  --color-violet: #7c5cff;
-  --color-cyan: #46d6ff;
-  --color-moon: #eef0ff;
-  --color-mist: #aeb4dd;
-  --font-sans: 'M PLUS Rounded 1c', system-ui, sans-serif;
-  --container-wrap: 1120px;
-  --shadow-deep: 0 24px 60px rgb(5 8 30 / 0.5);
+  --color-ground: #16131f;
+  --color-surface: #211c2e;
+  --color-raised: #2c2640;
+  --color-stage: #1b1726;
+  --color-watermark: #241e34;
+  --color-line: #3d3554;
+  --color-field: #7a7098;
+  --color-ink: #f4effa;
+  --color-muted: #b3a9c9;
+  --color-sakura: #ff8fb8;
+  --color-lavender: #b9a4ff;
+  --color-butter: #ffd37a;
+  --color-mint: #7ee0c3;
+  --color-on-fill: #1a0f1c;
+  --font-body: 'Nunito', system-ui, sans-serif;
+  --font-display: 'M PLUS Rounded 1c', 'Nunito', system-ui, sans-serif;
+  --font-kana: 'SyncKai Kana', 'M PLUS Rounded 1c', sans-serif;
+  --container-wrap: 1200px;
+  --radius-card: 14px;
+  --radius-block: 22px;
+  /* Ombre « autocollant » de la charte : ce qui flotte au-dessus de la page (bouton principal, bulle). */
+  --shadow-pop: 2px 2px 0 rgb(0 0 0 / 0.45);
+  --shadow-float: 0 30px 70px rgb(0 0 0 / 0.5);
 }
 
-/* Dégradé de marque (violet vers cyan), en fond ou sur du texte. */
-@utility bg-kai {
-  background-image: linear-gradient(100deg, var(--color-violet), #4f6bff 55%, var(--color-cyan));
-}
-
-@utility text-kai {
-  background-image: linear-gradient(100deg, var(--color-violet), #4f6bff 55%, var(--color-cyan));
-  background-clip: text;
-  color: transparent;
+/*
+ * Kana décoratifs (ジドウ, サイセイ…) : le seul sous-ensemble de M PLUS Rounded 1c qui les contient
+ * (n° 119, 19 ko) au lieu de la police japonaise entière (1 Mo). Une famille à part, limitée aux katakana.
+ */
+@font-face {
+  font-family: 'SyncKai Kana';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../node_modules/@fontsource/m-plus-rounded-1c/files/m-plus-rounded-1c-119-800-normal.woff2')
+    format('woff2');
+  unicode-range: U+30A0-30FF;
 }
 
 /* Largeur commune à toutes les sections de la page. */
@@ -34,6 +53,23 @@
   padding-inline: clamp(16px, 4vw, 40px);
 }
 
+/* Surtitre en capitales (« SUIVI D'ANIMES ») : le kana qui le suit garde sa casse et passe en sakura. */
+@utility eyebrow {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Disque de la surface de droite, repris des captures du store. */
+@utility disc {
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #2e2744 0%, #241e35 60%, #1f1a2d 100%);
+}
+
 @layer base {
   html {
     color-scheme: dark;
@@ -42,25 +78,25 @@
   }
 
   body {
-    @apply bg-night font-sans text-[17px] leading-[1.65] text-moon antialiased max-sm:text-base;
+    @apply bg-ground font-body text-[17px] leading-[1.65] font-semibold text-ink antialiased max-sm:text-base;
   }
 
   h1,
   h2,
   h3 {
-    @apply leading-[1.15] font-extrabold tracking-[-0.01em];
+    @apply font-display leading-[1.12] font-extrabold tracking-[-0.01em];
   }
 
   h2 {
-    font-size: clamp(28px, 4vw, 40px);
+    font-size: clamp(30px, 3.6vw, 42px);
   }
 
   h3 {
-    @apply text-[21px] font-bold;
+    @apply text-[21px];
   }
 
   :focus-visible {
-    @apply rounded-md outline-3 outline-offset-3 outline-cyan;
+    @apply rounded-md outline-2 outline-offset-2 outline-lavender;
   }
 }
 

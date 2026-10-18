@@ -5,30 +5,32 @@ import { SiteConfig } from '@domain/site';
 import { FooterText } from '@domain/translation';
 import { ExternalLink } from '@shared/ui/external-link/external-link';
 import { Icon, IconName } from '@shared/ui/icon/icon';
+import { Lockup } from '@shared/ui/lockup/lockup';
 
 /** Pied de page : liens du projet, langues, avertissement et licence. */
 @Component({
   selector: 'sk-footer',
-  imports: [RouterLink, ExternalLink, Icon],
+  imports: [RouterLink, ExternalLink, Icon, Lockup],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'block border-t border-ink-line px-[clamp(16px,4vw,40px)] pt-9 pb-12 text-sm text-mist',
+    class: 'block border-t border-line px-[clamp(16px,4vw,40px)] pt-9 pb-12 text-sm text-muted',
   },
   template: `
     <div class="mx-auto max-w-wrap space-y-3.5">
+      <sk-lockup class="mb-5" />
       <nav [attr.aria-label]="text().source" class="flex flex-wrap gap-x-6 gap-y-2">
         @for (link of links(); track link.label) {
           @if (link.route) {
             <a
               [routerLink]="link.route"
-              class="inline-flex items-center gap-1.5 no-underline hover:text-moon hover:underline"
+              class="inline-flex items-center gap-1.5 no-underline hover:text-ink hover:underline"
               >{{ link.label }}</a
             >
           } @else {
             <a
               skExternal
               [href]="link.url"
-              class="inline-flex items-center gap-1.5 no-underline hover:text-moon hover:underline"
+              class="inline-flex items-center gap-1.5 no-underline hover:text-ink hover:underline"
             >
               @if (link.icon) {
                 <sk-icon [name]="link.icon" class="size-4" />
@@ -45,7 +47,7 @@ import { Icon, IconName } from '@shared/ui/icon/icon';
             [attr.hreflang]="language.code"
             [attr.lang]="language.code"
             [attr.aria-current]="language.code === current() ? 'true' : null"
-            class="no-underline hover:text-moon aria-[current]:text-cyan"
+            class="no-underline hover:text-ink aria-[current]:text-lavender"
             (click)="languagePicked.emit(language.code)"
             >{{ language.name }}</a
           >
