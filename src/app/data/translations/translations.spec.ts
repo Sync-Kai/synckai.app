@@ -1,7 +1,7 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { SHOT_KANA } from '@domain/kana';
-import { screenshotPath } from '@domain/screenshot';
+import { screenshotPath, shareImagePath } from '@domain/screenshot';
 import { TRANSLATION_DATA } from './index';
 import siteConfig from '../site.config.json';
 
@@ -43,6 +43,11 @@ describe('traductions', () => {
       .map((f) => f.replace(/\.json$/, ''))
       .sort();
     expect(TRANSLATION_DATA.map((t) => t.code).sort()).toEqual(files);
+  });
+
+  it('trouve l’image de partage du jeu de captures', () => {
+    const path = shareImagePath(siteConfig.screenshots);
+    expect(existsSync(join(process.cwd(), 'public', path)), path).toBe(true);
   });
 
   it('a des codes de langue uniques', () => {

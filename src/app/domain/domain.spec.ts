@@ -3,7 +3,7 @@ import { plainText, splitEmphasis } from './emphasis';
 import { pickLanguage } from './language';
 import { Release, compareVersions, formatReleaseDate, localizeReleases } from './release';
 import { formatPlaybackTime, interpolate } from './playback';
-import { screenshotPath } from './screenshot';
+import { ScreenshotSet, screenshotPath, shareImagePath } from './screenshot';
 import { SiteConfig } from './site';
 import { serializeJsonLd, softwareApplicationSchema } from './structured-data';
 import { Translation } from './translation';
@@ -194,14 +194,18 @@ describe('splitEmphasis', () => {
 });
 
 describe('screenshotPath', () => {
-  const set = { languages: ['en', 'fr'], fallback: 'en' };
+  const set = { version: '2.4.0', languages: ['en', 'fr'], fallback: 'en' };
 
   it('utilise les captures de la langue quand elles existent', () => {
-    expect(screenshotPath(set, 'fr', '03-agenda')).toBe('assets/shots/fr/03-agenda.webp');
+    expect(screenshotPath(set, 'fr', '03-agenda')).toBe('assets/store/2.4.0/fr/03-agenda.webp');
   });
 
   it('retombe sur les captures de la langue de repli', () => {
-    expect(screenshotPath(set, 'es', '03-agenda')).toBe('assets/shots/en/03-agenda.webp');
+    expect(screenshotPath(set, 'es', '03-agenda')).toBe('assets/store/2.4.0/en/03-agenda.webp');
+  });
+
+  it('range l’image de partage avec les captures de la même version', () => {
+    expect(shareImagePath(set)).toBe('assets/store/2.4.0/og.png');
   });
 });
 
@@ -265,12 +269,14 @@ describe('isMobileDevice', () => {
 });
 
 describe('softwareApplicationSchema', () => {
+  const screenshots: ScreenshotSet = { version: '2.4.0', languages: ['en'], fallback: 'en' };
   const site = {
     url: 'https://synckai.app',
     repository: 'https://github.com/Sync-Kai/SyncKai',
     author: 'Quentin Geerts',
     authorAnilist: 'https://anilist.co/user/Oyumiro/',
     stores: { chromeExtensionId: 'abc', firefoxAddonSlug: 'synckai', firefoxPublished: false },
+    screenshots,
   } as SiteConfig;
   const t = {
     code: 'fr',
@@ -284,6 +290,7 @@ describe('softwareApplicationSchema', () => {
       '@type': 'SoftwareApplication',
       name: 'SyncKai',
       description: 'Description',
+      image: 'https://synckai.app/assets/store/2.4.0/og.png',
       url: 'https://synckai.app/fr/',
       inLanguage: 'fr',
       applicationCategory: 'BrowserApplication',

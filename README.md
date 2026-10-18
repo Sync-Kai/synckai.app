@@ -57,7 +57,7 @@ Conventions: one container per page reads the route and services, sections only 
 
 1. Copy `src/app/data/translations/en.json` to `<code>.json` (for example `es.json`) and translate every value. Set `code`, `name` (the language's own name, like *Español*) and `stores` (the locale codes the Chrome Web Store and Firefox Add-ons use).
 2. Register it in `src/app/data/translations/index.ts`.
-3. Optional: add the store screenshots as `.webp` in `public/assets/shots/<code>/` and add the code to `screenshots.languages` in `site.config.json`. Otherwise the English ones are used.
+3. Optional: add the store screenshots as `.webp` in `public/assets/store/<version>/<code>/` and add the code to `screenshots.languages` in `site.config.json`. Otherwise the English ones are used.
 4. Add the language to every release in `src/app/data/releases.json` (see below).
 5. Run `npm run verify`. The build fails if a text is missing, and the tests fail if a key is missing, extra or empty. The new language gets its prerendered pages, its menu entry, its sitemap entries and automatic detection.
 
@@ -67,7 +67,9 @@ Each time a version of the extension is published, add it at the top of `src/app
 
 ## Updating the screenshots
 
-The feature blocks show the right half of the extension's store shots (`docs/store/screenshots/<lang>/0{2..5}-*.png` in the extension repository, 1280×800, made by its `npm run screenshots`): crop each one at x 610 to 670×800 (the « stage » surface with the disc and the floating UI), save it as WebP (quality about 85) under the same name in `public/assets/shots/<lang>/`. The text column is written by the site from the translations, so never use the full shot (it carries its own caption). The tests fail if a shot is missing for a language listed in `screenshots.languages`. `public/assets/og.png` is a copy of the extension's `docs/store/promo-1400x560.png`.
+The feature blocks show the right half of the extension's store shots (`docs/store/screenshots/<lang>/0{2..5}-*.png` in the extension repository, 1280×800, made by its `npm run screenshots`): crop each one at x 610 to 670×800 (the « stage » surface with the disc and the floating UI), save it as WebP (quality about 85) under the same name in `public/assets/store/<version>/<lang>/`, where `<version>` is the extension version the shots come from. The text column is written by the site from the translations, so never use the full shot (it carries its own caption). `public/assets/store/<version>/og.png` (the share image) is a copy of the extension's `docs/store/promo-1400x560.png`.
+
+A new set always goes into a new folder, with `screenshots.version` in `site.config.json` set to that folder; never replace the files of a published set in place. `/assets/*` is cached for 7 days (`public/_headers`), by Cloudflare and by browsers, so a file replaced under the same name keeps being served in its old version (this happened with 1.8.0). Delete the previous folder in the same change. The tests fail if a shot or the share image of the configured set is missing.
 
 ## Firefox availability
 

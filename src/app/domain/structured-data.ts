@@ -1,3 +1,4 @@
+import { shareImagePath } from './screenshot';
 import { SiteConfig } from './site';
 import { storeLinks } from './store';
 import { Translation } from './translation';
@@ -31,7 +32,7 @@ export function softwareApplicationSchema(
     description: t.meta.description,
     url: pageUrl,
     inLanguage: t.code,
-    image: `${site.url}/assets/og.png`,
+    image: `${site.url}/${shareImagePath(site.screenshots)}`,
     applicationCategory: 'BrowserApplication',
     operatingSystem: 'Windows, macOS, Linux, ChromeOS',
     ...(version ? { softwareVersion: version } : {}),

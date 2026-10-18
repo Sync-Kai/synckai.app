@@ -117,7 +117,7 @@ export interface TextBlock {
 export interface FeatureItem extends TextBlock {
   /** Surtitre du bloc (« Panneau latéral »), à côté du kana de la capture. */
   readonly eyebrow: string;
-  /** Nom de la capture, sans extension, dans assets/shots/<langue>/. */
+  /** Nom de la capture, sans extension, dans assets/store/<version>/<langue>/. */
   readonly shot: string;
 }
 

@@ -1,5 +1,6 @@
 import { DOCUMENT, Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { shareImagePath } from '@domain/screenshot';
 import { JsonLd, serializeJsonLd, softwareApplicationSchema } from '@domain/structured-data';
 import { Translation } from '@domain/translation';
 import { SITE_CONFIG, TRANSLATIONS } from '../tokens';
@@ -51,7 +52,11 @@ export class SeoService {
     this.setMeta('property', 'og:title', title);
     this.setMeta('property', 'og:description', description);
     this.setMeta('property', 'og:url', url);
-    this.setMeta('property', 'og:image', `${this.site.url}/assets/og.png`);
+    this.setMeta(
+      'property',
+      'og:image',
+      `${this.site.url}/${shareImagePath(this.site.screenshots)}`,
+    );
     this.setMeta('property', 'og:locale', t.code);
     this.setMeta('name', 'twitter:card', 'summary_large_image');
     this.setLinks([{ rel: 'canonical', href: url }, ...this.alternates(page)]);
