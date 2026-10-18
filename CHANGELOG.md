@@ -5,6 +5,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.8.1] - 2026-10-18
+
+### Fixed
+
+- The feature blocks showed the screenshots of the previous version of the extension, cropped: the new ones were published under the same file names, which Cloudflare and browsers keep in cache for a week. The store images now live in a folder named after the extension version (`assets/store/2.4.0/`), and the share image moved with them.
+
 ## [1.8.0] - 2026-10-18
 
 ### Added
