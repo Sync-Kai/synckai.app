@@ -102,6 +102,19 @@ The site is hosted on **Cloudflare Pages**, connected to this repository (Git in
 - Custom domain `synckai.app` (and `www.synckai.app`, redirected to it) is managed in Cloudflare.
 - `.github/workflows/ci.yml` runs `npm run verify` on `develop`, feature branches and pull requests.
 
+## SyncKai mobile: Android App Links and sign-in fallback pages
+
+Static files in `public/` (copied as they are to the site root, never handled by the Angular router) support the SyncKai Android app (`Sync-Kai/synckai-mobile`):
+
+| File | Role |
+|---|---|
+| `public/.well-known/assetlinks.json` | Android App Links: lets `app.synckai.mobile` receive `https://synckai.app/auth/anilist` and `https://synckai.app/auth/mal`. Served as `application/json` (`public/_headers`), no redirect, cached 5 minutes. |
+| `public/auth/anilist/index.html`, `public/auth/mal/index.html` | Fallback pages when Android does not hand the sign-in redirect to the app: an "Open SyncKai" button (and one automatic attempt) that forwards the query and the fragment to `synckai://auth/<service>`. Static HTML, no third-party request, nothing sent or logged (the AniList token is in the fragment, which never reaches the server), `noindex`, strict inline Content-Security-Policy. |
+
+**Maintainer to do before App Links can verify:** `assetlinks.json` holds the placeholder `__PREVIEW_SHA256__` in `sha256_cert_fingerprints`. Replace it with the SHA-256 fingerprint of the preview signing key, listed in `docs/release.md` of the `synckai-mobile` repository (format `AA:BB:...`, 32 bytes in uppercase hexadecimal). Add the release key fingerprint as a second entry of the same array when that key exists (and the Google Play app signing key later, if the app is published there). Check afterwards with `curl -i https://synckai.app/.well-known/assetlinks.json` (status 200, `content-type: application/json`).
+
+If a fallback page's inline script or style is edited, update the `sha256-…` hashes in its `Content-Security-Policy` meta tag; `src/app/public-pages.spec.ts` fails otherwise.
+
 ## Git workflow
 
 Gitflow with a linear history: `main` (production, deployed), `develop` (integration), `feature/*`, `bugfix/*`, `hotfix/*`, `chore/*`, `release/*`. Rebase on `develop`, then `git merge --ff-only`. Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/), in English. See [CHANGELOG.md](CHANGELOG.md).

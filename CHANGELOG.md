@@ -5,6 +5,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+### Added
+
+- Android App Links for the SyncKai mobile app (`/.well-known/assetlinks.json`, served as JSON) and two static fallback pages, `/auth/anilist` and `/auth/mal`, that forward the sign-in redirect to the app. They send nothing and load nothing from outside.
+
 ## [1.8.1] - 2026-10-18
 
 ### Fixed
