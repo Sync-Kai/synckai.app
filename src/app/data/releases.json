@@ -1,5 +1,44 @@
 [
   {
+    "version": "2.5.0",
+    "date": "2026-11-12",
+    "text": {
+      "en": {
+        "title": "Sequel alerts, watch order and a new popup",
+        "highlights": [
+          "Sequel alerts: SyncKai tells you when a series you finished or are watching gets a sequel, and the Schedule gains an Announced view of what's coming.",
+          "Watch order, next to the video: the whole franchise in release order (seasons, films, OVAs), with what you already watched ticked off and what comes next.",
+          "For you: series to discover from what you rated highly, read from AniList, with Plan to watch or Not interested in one click.",
+          "A new popup with a side rail: Watching, Activity, For you, Schedule and Stats. Stats shows what SyncKai synced day after day, and your profile statistics.",
+          "My series shows the airing status and the time left to catch up, and groups the series you haven't touched in a while so you can pause, drop or keep them in one click.",
+          "See which of your friends on AniList have a series in their list, with their rating. And SyncKai no longer sends your AniList and MyAnimeList cookies with its requests."
+        ]
+      },
+      "fr": {
+        "title": "Alertes de suite, ordre de visionnage et nouveau popup",
+        "highlights": [
+          "Alertes de suite : SyncKai te prévient quand une série que tu as finie ou que tu regardes a droit à une suite, et l'Agenda gagne une vue Annoncées avec ce qui arrive.",
+          "L'ordre de visionnage, à côté de la vidéo : toute la franchise dans l'ordre de sortie (saisons, films, OAV), avec ce que tu as déjà vu coché et ce qui vient ensuite.",
+          "Pour toi : des séries à découvrir d'après tes meilleures notes, lues sur AniList, à ajouter à ta liste ou à écarter en un clic.",
+          "Un nouveau popup avec un rail latéral : En cours, Activité, Pour toi, Agenda et Stats. Stats montre ce que SyncKai a synchronisé jour après jour, et les statistiques de ton profil.",
+          "Mes séries affiche l'état de diffusion et le temps qu'il te reste à rattraper, et regroupe les séries délaissées depuis un moment pour les mettre en pause, les abandonner ou les garder en un clic.",
+          "Vois lesquels de tes amis sur AniList ont une série dans leur liste, avec leur note. Et SyncKai n'envoie plus tes cookies AniList et MyAnimeList avec ses requêtes."
+        ]
+      },
+      "de": {
+        "title": "Fortsetzungen, Schaureihenfolge und ein neues Popup",
+        "highlights": [
+          "Benachrichtigungen bei Fortsetzungen: SyncKai sagt dir Bescheid, wenn eine Serie, die du beendet hast oder gerade schaust, eine Fortsetzung bekommt, und der Zeitplan erhält die Ansicht Angekündigt mit allem, was kommt.",
+          "Die Schaureihenfolge, direkt neben dem Video: die ganze Franchise in Erscheinungsreihenfolge (Staffeln, Filme, OVAs), mit Häkchen bei dem, was du schon gesehen hast, und dem, was als Nächstes kommt.",
+          "Für dich: Serien zum Entdecken nach deinen besten Bewertungen, von AniList, mit einem Klick vormerken oder aussortieren.",
+          "Ein neues Popup mit Seitenleiste: Schaue ich, Aktivität, Für dich, Zeitplan und Statistik. Die Statistik zeigt, was SyncKai Tag für Tag synchronisiert hat, dazu die Statistiken deines Profils.",
+          "Meine Serien zeigt den Sendestatus und die Zeit, die du noch nachzuholen hast, und sammelt Serien, die du länger nicht angerührt hast, damit du sie mit einem Klick pausierst, abbrichst oder behältst.",
+          "Sieh, welche deiner Freunde auf AniList eine Serie in ihrer Liste haben, mit ihrer Bewertung. Und SyncKai sendet deine AniList- und MyAnimeList-Cookies nicht mehr mit seinen Anfragen."
+        ]
+      }
+    }
+  },
+  {
     "version": "2.4.0",
     "date": "2026-10-18",
     "text": {
