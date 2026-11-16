@@ -5,6 +5,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versio
 
 ## [Unreleased]
 
+## [1.9.0] - 2026-11-16
+
+### Added
+
+- What's new: version 2.5.0 of the extension (sequel alerts and the Announced calendar, the watch order next to the video, « For you » suggestions, the new popup with its side rail and Stats, the airing status and time left in « My series », friends on AniList), in every language.
+
 ## [1.8.1] - 2026-10-18
 
 ### Fixed
